@@ -1,0 +1,17 @@
+img.trail-img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+  }
+  .panel-large-body-padding.shadow.bg-white.mt-3.pt-2.pb-3 {
+    margin-top: 6rem !important;
+  }
+  .text-center.top-align {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
+    bottom: auto;
+  }

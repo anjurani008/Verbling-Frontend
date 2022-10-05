@@ -1,0 +1,109 @@
+
+
+body {
+  font-family: Lato, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 4rem 3fr 1fr 2rem;
+  margin-top: 2rem;
+  grid-column-gap: 2rem;
+}
+
+.header {
+  grid-column: 2 / 5;
+}
+
+.heading {
+  font-family: Montserrat, sans-serif;
+}
+
+.header .subheading {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: smaller;
+  color: #455A64;
+}
+
+.content {
+  grid-column: 2 / 3;
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.content .poster-image {
+  width: 100%;
+  object-fit: cover;
+  height: 40rem;
+}
+
+.aside .heading {
+  margin: 0;
+  font-weight: 600;
+}
+
+.footer {
+  grid-column: 1 / 5;
+  background-color: #37474F;
+  padding: 0.7rem 1rem;
+  margin-top: 3rem;
+  text-align: right;
+}
+
+.footer .name-link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+h1.section-header.d-flex.justify-content-end button {
+  background: #fff !important;
+  color: #e3107d !important;
+  border: none;
+  box-shadow: none !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    grid-template-columns: 2rem 3fr 1fr 2rem;
+  }
+  .content {
+    grid-column: 2 / 4;
+  }
+  .aside {
+    grid-column: 2 / 4;
+  }
+}
+
+.card {
+  display: flex;
+  text-transform: capitalize;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.card img {
+  height: 140px;
+  width: 120px;
+  margin-right: 0.5rem;
+  object-fit: cover;
+}
+
+.card p {
+  margin: 0;
+}
+
+.card .title {
+  font-size: 0.8rem;
+}
+
+.card .author {
+  font-size: small;
+}
+h1.headLine {
+  font-size: 16px;
+  font-weight: 600;
+}
+.content p {
+  font-size: 14px;
+}

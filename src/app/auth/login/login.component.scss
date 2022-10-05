@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+
+.AppForm .AppFormLeft h1{
+  font-size: 28px;
+  font-weight: 500;
+}
+// .col-md-9.mx-auto {
+//   display: flex;
+//   align-items: center;
+//   height: 100vh;
+// }
+.AppForm {
+  margin: 2rem 0rem;
+}
+.col-md-6.p-5 {
+  display: grid;
+  align-items: center;
+  padding-right: 0px !important;
+}
+.AppForm .AppFormLeft input:focus{
+  border-color: #ced4da;
+}
+ 
+button.btn.btn-success.btn-block.shadow.border-0.py-2.text-uppercase.w-100 {
+  font-size: 16px;
+  padding: 10px !important;
+}
+mat-icon {
+  position: absolute;
+  font-size: 16px !important;
+  right: 0px;
+  top: 14px;
+  cursor: pointer;
+}
+.AppForm .AppFormLeft input::placeholder{
+ font-size: 15px;
+}
+.AppForm .AppFormLeft i{
+  position: absolute;
+  right: 18px;
+  top: 43%;
+  transform: translateY(-50%);
+}
+span.fa {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.AppForm .AppFormLeft a{
+  color: #3a3e42 ;
+}
+.AppForm .AppFormLeft button{
+  background: linear-gradient(45deg,#e3107d,#e3107d);
+  border-radius: 30px;
+}
+.AppForm .AppFormLeft p span{
+color: #007bff;
+}
+.AppForm .AppFormRight{
+  background-image: url('https://i.ibb.co/tDLqQtj/bg.jpg');
+  // height: 450px;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.AppForm .AppFormRight:after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #e3107d, #ffffff);
+  opacity: 0.5;
+}
+.AppForm .AppFormRight h2{
+  z-index: 1;
+}
+.AppForm .AppFormRight h2::after{
+content: "";
+position: absolute;
+width: 100%;
+height: 2px;
+background-color: #fff;
+bottom: 0;
+left:50%;
+transform: translateX(-50%);
+}
+.AppForm .AppFormRight p{
+  z-index: 1;
+}
+
+@media(max-width: 991px){
+  .AppForm .AppFormLeft a{
+    display: block;
+  }
+}
+
+@media(max-width: 767px){
+  .col-md-6.p-5, .AppForm .AppFormRight{
+    padding: 2rem !important;
+  }
+  .col-md-6.p-5 {
+    order: 1;
+}
+}

@@ -1,0 +1,197 @@
+<header class="shadow">
+    <div class="container-fluid border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+              <img class="headerLogo" src="assets/img/logo.png" alt="">
+            </a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+             <div class="phview mb-3">
+              <a class="navbar-brand" href="#">
+                <img class="headerLogo" src="assets/img/logo.png" alt="">
+              </a> 
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-times text-white" aria-hidden="true"></i>
+              </button>
+            </div>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" href="javascript:void(0)" [routerLink]="[ '/teachers/list']">Find a Teacher</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="javascript:void(0)" [routerLink]="[ '/enterprise']">Enterprise</a>
+                </li> -->
+                <li class="nav-item">
+                    <button mat-button [matMenuTriggerFor]="menu">More</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item><a data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" [routerLink]="[ '/enterprise']"> <img class="icon" src="assets/img/1.svg" alt="">  Enterprise</a></button>
+                      <button mat-menu-item *ngIf="!user"><a data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" [routerLink]="[ '/teach']"><img class="icon" src="assets/img/2.svg" alt="">  Apply to Teach</a></button>
+                
+                  
+                    </mat-menu>
+
+                  
+              </li>
+              </ul>
+         <div class="right">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <!-- <li class="nav-item">
+                    <select class="custom-select">
+                        <option selected>Currency(ANG)</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                </li>
+                <li class="nav-item">
+                    <select class="custom-select">
+                        <option selected>Site Language</option>
+                        <option value="1">English</option>
+                        <option value="2">Hindi</option>
+                        <option value="3">Urdu</option>
+                      </select>
+                </li> -->
+                <li class="nav-item" *ngIf="!user">
+                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" [routerLink]="[ '/auth/login']" class="btn btn-link mr-2 login">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="!user">
+                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" [routerLink]="[ '/auth/signup']" class="btn btn-primary">SignUp</a>
+                </li> 
+                          <!-- <li class="nav-item active">
+                            <a class="nav-link" [routerLink]="[ '/page/portfolio']">Portfolio </a>
+                          </li> -->
+                          <!-- <li class="nav-item">
+                          <a class="nav-link" href="#">For Business</a>
+                        </li> -->
+                        <!-- [routerLink]="[ '/services/price-step']" (click)="addScroll()" -->
+                          <!-- <li class="nav-item" *ngIf="!token || (user && user?.role!='photographer')">
+                            <a class="nav-link" [routerLink]="[ '/home']" [queryParams]="{id:'pricing'}" >Pricing</a>
+                          </li> -->
+                          <!-- <li class="nav-item" *ngIf="token && user?.role!='photographer'">
+                            <a class="nav-link" [routerLink]="[ '/bookings']">Bookings</a>
+                          </li> -->
+                          <!-- *ngIf="!token || (user && user?.role!='photographer')" -->
+                          <!-- <li class="nav-item">
+                            <a class="nav-link" [routerLink]="[ '/bookings/track']">Track My Order</a>
+                          </li> -->
+                  
+                  
+                  
+                          <!-- <li class="nav-item active">
+                            <a class="nav-link" >1-800-484-6002 </a>
+                          </li> -->
+                          <!-- <li class="nav-item" *ngIf="user && user?.role=='guestuser'">
+                            <a class="nav-link" [routerLink]="[ '/auth/login']">Login</a>
+                          </li> -->
+                          <!-- <li class="nav-item" *ngIf="user?.role=='guestuser' || !user">
+                            <a class="nav-link" [routerLink]="[ '/auth/login']">Login</a>
+                          </li> -->
+                          <!-- <li class="nav-item" *ngIf="user && user?.role=='photographer'">
+                            <a class="nav-link pl-3 pr-1" [matMenuTriggerFor]="menus">
+                              <i class="fa fa-bell"  aria-hidden="true"></i>
+                              <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger" *ngIf="notifications.length>0">
+                                 {{notificationCount}}
+                                </span>
+                            </a>
+                              
+                            <mat-menu #menus="matMenu">
+                              <ul class="align pl-3 pr-3">
+                                <div *ngIf="notifications.length==0">
+                                  <h6 class="text-danger" > No notification</h6>
+                                </div>
+                  
+                                <li *ngFor="let item of notifications">
+                                  <a [routerLink]="['/services/notification']" (click)="updateReadStatus()" class="top-text-block">
+                                    <img class="noimgage" src="assets/noti.png" />
+                                    <div class="top-text-heading">
+                                      <p class="mb-0">New booking request </p>
+                                      <div class="top-text-light">{{item?.createdAt | date: 'medium'}}</div>
+                                    </div>
+                  
+                                  </a>
+                                </li>
+                               
+                  
+                  
+                              </ul>
+                              <span class="text-center d-block text-primary cursor-pointer" *ngIf="totalNotifications>3" [routerLink]="['/services/notification']">Load More</span>
+                            </mat-menu>
+                          </li> -->
+                  
+                          <!-- <li class="nav-item" *ngIf="user && user?.role=='user'">
+                            <a class="nav-link pl-3 pr-1" [matMenuTriggerFor]="menus" >
+                              <i class="fa fa-bell"  aria-hidden="true"></i>
+                              <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger" >
+                                  {{notificationCount}}
+                                </span>
+                            </a>
+                  
+                  
+                            <mat-menu #menus="matMenu">
+                              <ul class="align pl-3 pr-3">
+                                <div *ngIf="notifications1.length==0">
+                                  <h6 class="text-danger" > No notification</h6>
+                                </div>
+                  
+                                <li *ngFor="let item of notifications1">
+                                  <a [routerLink]="['/services/notification']" (click)="updateReadStatus()" class="top-text-block">
+                                    <img class="noimgage" src="assets/noti.png" />
+                                    <div class="top-text-heading">
+                                      <p class="mb-0">Hi {{item?.customerName | titlecase}} , your booking has been accepted for {{item?.categoryName | titlecase}}  </p>
+                                      <div class="top-text-light">{{item?.createdAt | date: 'medium'}}</div>
+                                    </div>
+                  
+                                  </a>
+                                </li>
+                  
+                  
+                              </ul>
+                              <span class="text-center d-block text-primary cursor-pointer" *ngIf="totalNotifications1>3" [routerLink]="['/services/notification']">Load More</span>
+                            </mat-menu>
+                          </li> -->
+                  
+                  
+                  
+                  <!-- *ngIf="!token || (user && user?.role!='user')" -->
+                  
+                  
+                        
+                          <li class="position-relative"  *ngIf="user">
+                            <button class="btn btn-outline-primary border-none" mat-button [matMenuTriggerFor]="menu"
+                             >
+                              <img *ngIf="!updateData?.image" src="assets/img/user.png" alt="" class="userImg mr-2">
+                              <img *ngIf="updateData?.image" src="{{_host}}{{updateData?.image}}" alt="" class="userImg mr-2"> <span
+                                class="user-name">{{user?.fullName | titlecase}}</span>
+                            </button>
+                            <mat-menu #menu="matMenu" >
+                              <button mat-menu-item *ngIf="user.role=='teacher'" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" [routerLink]="['/dashboard/teacher']"> <img class="dash" src="https://cdn.verbling.com/static/svg/icons8/cdb7c8f3132bf259c792ef48996205d0.icons8-home.svg" alt=""> Dashboard</button>
+                              <button mat-menu-item *ngIf="user.role=='student'" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" [routerLink]="['/dashboard/student']"> <img class="dash" src="https://cdn.verbling.com/static/svg/icons8/cdb7c8f3132bf259c792ef48996205d0.icons8-home.svg" alt=""> Dashboard</button>
+                              <button mat-menu-item [routerLink]="['/profile/view']" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" ><i class="fa fa-user mr-2" aria-hidden="true"></i>Profile</button>
+                              <!-- <button mat-menu-item [routerLink]="['/auth/change-password']"*ngIf="token && user?.role!=='guestuser'"><i class="fa fa-unlock-alt mr-2" aria-hidden="true"></i>Change Password</button> -->
+                              <button mat-menu-item (click)="logout()" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-sign-out mr-2" aria-hidden="true"></i>Log Out</button>
+                            </mat-menu>
+                          </li>
+                  
+                       
+              </ul>
+         </div>
+            </div>
+           
+           
+          </nav>
+    </div>
+    <!-- <div class="link-btn">
+      <ul>
+        <li><a href="#"><img src="assets/img/country.webp" alt="country"> <p>Country</p></a></li>
+        <li><a href="#"><i class="fa fa-calendar-o"></i><p>Availability</p></a></li>
+        <li><a href="#"><i class="fa fa-globe"></i><p>Globe</p></a></li>
+        <li><a href="#"><i class="fa fa-commenting-o"></i><p>Teacher Speaks</p></a></li>
+        <li><a href="#"><i class="fa fa-tag"></i><p>Price</p></a></li>
+        <li><a href="#"><i class="fa fa-bars"></i><p>Filter</p></a></li>
+      </ul>
+    </div> -->
+   
+
+    </header>

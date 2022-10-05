@@ -1,0 +1,14 @@
+<!-- <h1 mat-dialog-title>Favorite Animal</h1> -->
+<div mat-dialog-content>
+ <div class="body text-center d-flex">
+    <img *ngIf="!data.data.teacherDetails.teacherdetails.image" src="assets/img/user.png"  class="no-img" alt="">
+    <img *ngIf="data.data.teacherDetails.teacherdetails.image" src="{{_host}}{{data.data.teacherDetails.teacherdetails.image}}" class="no-img" alt="">
+    <div class="details ml-3">
+    <h4 class="name">{{data.data.teacherDetails.teacherdetails.fullName }}</h4>
+    <p class="timeslot">{{data.data.StartTime | date}}</p>
+    <button class="btn btn-primary shadow  w-100" (click)="scheduleBooking()">
+      Book
+  </button>
+   </div>
+ </div>
+</div> 

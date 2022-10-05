@@ -1,0 +1,794 @@
+<ngx-spinner></ngx-spinner>
+<div class="bg_main pt-4 pb-4">
+
+    <!-- <div class="container">
+        <div class="coupon mb-5">
+            <h1>Get 10% off now.
+                Apply Coupon: 10VERBLING</h1>
+            <h1>
+                Expires in: 04:18:59:05 (Coupons left: 66)</h1>
+        </div>
+    </div> -->
+
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="shadow border-radius bg-white">
+                    <!-- <iframe width="100%" height="415" src="https://www.youtube.com/embed/eEaZvEZye84"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe> -->
+                        <!-- <img *ngIf="!userData.intoductoryLink" src="assets/img/novideo.png" class="w-100" alt=""> -->
+                        <iframe [src]="urlSafe" *ngIf="userData.intoductoryLink" width="100%" height="400"  frameborder="0" allowfullscreen></iframe>
+                    <div class="panel-body pt-4">
+                        <div class="flex flex-direction-column">
+                            <div class="flex flex-direction-row flex-align-center margin-bottom-xl">
+                               
+                                    <img *ngIf="!userData.image" draggable="false" src="../../../assets/img/user.png"
+                                        class="ProfilePic verb-profile-pic img-responsive round inline"
+                                        alt="Profile Picture">
+                                    <img *ngIf="userData.image" draggable="false" src="{{_host}}{{userData.image}}"
+                                        class="ProfilePic verb-profile-pic img-responsive round inline"
+                                        alt="Profile Picture">
+                                 
+                                <div class="flex flex-1 flex-direction-column teacher-main-info">
+                                    <div
+                                        class="flex flex-direction-row mobile-flex-direction-column flex-justify-content-space-between margin-bottom-sm">
+                                        <div class="flex flex-direction-row mobile-flex-direction-column">
+                                            <div class="flex flex-align-center ph">
+                                                <h1 class="no-margin margin-right-md masked-h2" style="margin-bottom:0">
+                                                    {{userData.fullName | titlecase}}
+                                                </h1>
+                                                <!-- <img width="20px" height="20px" alt="security_checked"
+                                                    src="../../../assets/img/tik.svg" class="margin-right-sm"
+                                                    style="max-width:inherit;width:20px;height:20px">
+                                                <img width="22px" height="22px" alt="police_badge"
+                                                    src="../../../assets/img/shild.svg" class="margin-right-sm"
+                                                    style="max-width:inherit;width:22px;height:22px">
+                                                <img alt="Flag" src="../../../assets/img/fleg.png"
+                                                    class="sc-bdnxRM hxGBYR margin-right-sm" width="20" height="20"
+                                                    style="max-width:none"> -->
+                                            </div>
+                                            <!-- <div class="StarRatings flex flex-direction-row flex-align-center">
+                                                <div class="flex margin-right-sm" role="img">
+                                                    <i class="text-warning fa fa-star" style="font-size:20px"></i>
+                                                </div>
+                                                <div class="text-bold text-large">5.0</div>
+                                            </div> -->
+                                        </div>
+                                        <div class="flex flex-direction-row flex-align-center" *ngIf="credentials.credentials && credentials.credentials.role!='teacher'">
+                                            <div class="margin-right-sm mobile-hide">
+                                                <div>
+                                                    <div style="cursor:pointer" (click)="addFavourite(userData.id)"><i
+                                                            class=" fa-2x text-muted"></i>
+                                                            <a  *ngIf="userData.id"  class="favorite" class="mr-2"><i class="fa" [ngClass]="{
+                                                                'fa-heart-o': !userData.isFavourite,
+                                                                'fa-heart fa-2x text-danger': userData.isFavourite
+                                                              }"></i></a>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <a class="mr-2 " mat-raised-button color="accent"  (click)="checkSubscription(userData,'Free consultation')" >Free Consultation</a>
+                                            <a class="mr-2 " mat-raised-button color="accent" (click)="checkSubscription(userData,'Lessons')" >Lessons</a>
+                                            <a class="mr-2 " mat-raised-button color="accent" *ngIf="user?.role!=='teacher' && userData.isindividual " (click)="checkSubscription(userData,'Individual')">Individual Lessons</a>
+                                        </div>
+                                    </div>
+                                  
+                                    <div
+                                        class="flex flex-align-center flex-direction-row mobile-flex-direction-column margin-bottom-sm">
+                                        <div class="flex flex-align-center">
+                                            <!-- <img width="25px" height="25px" alt="map_pin"
+                                                src="../../../assets/img/canddy.svg"
+                                                style="max-width:inherit;width:25px;height:25px"> -->
+                                                <span
+                                                country="DE">{{userData.country | titlecase}}</span>
+                                        </div>
+                                        <!-- <span class="padding-left-sm padding-right-sm mobile-hide">•</span>
+                                        <span class="new-clock undefined">6:14 AM (GMT+01:00)</span> -->
+                                    </div>
+                                    <div
+                                        class="d-flex flex-wrap flex-direction-row mobile-flex-direction-column flex-justify-content-space-between teacher-info margin-bottom-md mobile-hide">
+                                        <div
+                                            class="flex flex-direction-row ProfileBase--InnerBlock flex-align-center margin-bottom-md">
+                                            <!-- <img width="25px" height="25px" alt="class"
+                                                src="../../../assets/img/lappy.svg" class="margin-right-sm"
+                                                style="max-width:inherit;width:25px;height:25px"> -->
+                                            <div class="ProfileBase--truncate flex flex-direction-column ">
+                                                <label class="ProfileBase--truncate  margin-right-sm">Subject</label>
+                                                <div class="ProfileBase--truncate">
+                                                    <ul>
+ 
+                                                        <li class="ProfileBase--truncate" language="de" *ngFor = "let subject of userData.subjects">
+                                                            <img *ngIf="subject.image" src="{{_host}}{{subject?.image}}"
+                                                            alt="subject" class="coun-list">
+                                                             <img *ngIf="!subject.image"  src='assets/img/teach.jpg'
+                                                            alt="subject" class="coun-list">
+                                                           
+
+                                                            {{subject.name}}
+                                                        </li>
+                                                    </ul>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-direction-row ProfileBase--InnerBlock flex-align-center margin-bottom-md">
+                                            <!-- <img width="25px" height="25px" alt="user_group_man_woman"
+                                                src="../../../assets/img/2users.svg" class="margin-right-sm"
+                                                style="max-width:inherit;width:25px;height:25px"> -->
+                                            <div class="ProfileBase--truncate flex flex-direction-column ">
+                                                <label class="ProfileBase--truncate margin-right-sm">Price</label>
+                                                <div class="ProfileBase--truncate"><span> $ {{userData.price}}</span></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="flex flex-direction-row ProfileBase--InnerBlock flex-align-center margin-bottom-md">
+                                            <!-- <img width="25px" height="25px" alt="time"
+                                                src="../../../assets/img/watch.svg" class="margin-right-sm"
+                                                style="max-width:inherit;width:25px;height:25px"> -->
+                                            <div class="ProfileBase--truncate flex flex-direction-column ">
+                                                <label class="ProfileBase--truncate"> Lesson Duration</label>
+                                                <div class="ProfileBase--truncate"><span>45 min</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex flex-direction-row mobile-flex-direction-column flex-align-center mobile-flex-align-start">
+                                <h3 class="no-margin-bottom margin-right-xl">Speaks</h3>
+                                <span class="ProfLanguageList flex flex-align-center" style="flex-wrap:wrap">
+                                    <span><span>
+                                            <span style="display:inline-block;margin-right:0px">
+                                                <span class="ProfLanguage flex flex-direction-row flex-align-center"
+                                                    style="display:flex">
+                                                    <div class="margin-right-sm"><span language="en"
+                                                            *ngFor="let item of userData.speaks">{{item |
+                                                            titlecase}}</span>
+                                                    </div>
+                                                    <!-- <div class="text-bold" style="color:#36ca36">C2</div> -->
+                                                </span></span>
+                                            <!-- <span style="display:inline-block;margin-right:3px">,</span> -->
+                                        </span>
+                                        <!-- <span>
+                                            <span style="display:inline-block;margin-right:0px">
+                                                <span class="ProfLanguage flex flex-direction-row flex-align-center"
+                                                    style="display:flex">
+                                                    <div class="margin-right-sm"><span language="es">Spanish</span>
+                                                    </div>
+                                                    <div class="text-bold" style="color:#36ca36">C1</div>
+                                                </span></span>
+                                            <span style="display:inline-block;margin-right:3px">,</span></span> -->
+                                        <!-- <span>
+                                            <span style="display:inline-block;margin-right:3px">
+                                                <span class="ProfLanguage flex flex-direction-row flex-align-center"
+                                                    style="display:flex">
+                                                    <div class="margin-right-sm"><span language="la">Latin</span></div>
+                                                    <div class="text-bold" style="color:#ff9e00">B1</div>
+                                                </span></span></span> -->
+                                    </span></span>
+                            </div>
+                            <div>
+                                <div
+                                    style="border-bottom:solid 1px #d8d8d8;width:100%;margin-top:1rem;margin-bottom:2rem">
+                                </div>
+                                <div>
+                                    <h3 class="aboutCls">About Me</h3>
+                                    <div>
+                                        <div class="Desc"  >{{userData.aboutMe}}
+                                            <!-- <span>***
+                                                Unfortunately, I
+                                                can't offer lessons to complete beginners at the moment *** <br>
+                                                <br>
+                                                Hello,<br>
+                                                thank you for viewing my profile. My name is Kay and I give German
+                                                lessons online.<br>
+                                                <br>
+                                                I have experience teaching German and English to German natives and to
+                                                foreigners. I also have experience writing and editing texts for
+                                                publication, and I have corrected many texts written by non-native
+                                                German speakers on a different language learning website. I can speak
+                                                English fluently, so I am able to explain finer points of German in that
+                                                language as well.<br>
+                                                <br>
+                                                I have worked with children deemed "difficult" by others, but I have
+                                                learned that those labels do not matter and instead try to keep an open
+                                                mind with every new student and try to help them in their unique
+                                                situation. I am supportive and easy-going. I am flexible in the way I
+                                                correct (few or many corrections) and the topics we talk about. I can
+                                                and do explain grammar, but I'd prefer not to give a grammar lesson and
+                                                monologue for one hour. I like when my students know what they want and
+                                                what their goal is, because then I can help them in the best and most
+                                                efficient way.<br>
+                                                <br>
+                                                I am interested in a variety of topics: I like sports, culture, food,
+                                                entertainment, reading, and much more. I like travelling and getting to
+                                                know new countries, new people, and new cultures. I am currently
+                                                learning Spanish in order to travel to Spain for an extended period of
+                                                time.</span>
+                                            </div> -->
+                                            <!-- <a class="primary fs">Read More</a> -->
+                                        </div>
+                                        <!-- <div class="text-small margin-top-xl flex flex-direction-row"><a
+                                            class="primary">Translate</a></div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="panel-large-body-padding shadow bg-white mt-3">
+                        <div class="panel-body" id="section-analytic-badges">
+                            <h2>Teacher Stats</h2>
+                            <div class="row">
+                              
+                                <div class="col-6 col-sm-6 col-md-4">
+                                    <div style="height:100%"
+                                        class="flex-1 flex-wrap flex-direction-column flex-1 flex-justify-content-space-between">
+                                        <div class="flex text-bold flex-direction-column" style="margin:5px">
+                                            <img width="50px" height="50px" alt="timetable"
+                                                src="../../../assets/img/calwatch.svg"
+                                                style="max-width:inherit;width:50px;height:50px">
+                                            <span style="margin:-5px 0px"><label>Joined UROKI LIVE</label></span><span>3
+                                                years
+                                                ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-6 col-sm-6 col-md-4">
+                                    <div style="height:100%"
+                                        class="flex-1 flex flex-direction-column flex-1 flex-justify-content-space-between">
+                                        <div class="flex text-bold flex-direction-column" style="margin:5px">
+                                            <img width="50px" height="50px" alt="class"
+                                                src="../../../assets/img/lappy.svg"
+                                                style="max-width:inherit;width:50px;height:50px">
+                                            <span style="margin:-5px 0px"><label>Total
+                                                    Lessons</label></span><span><span>2,714</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-4">
+                                    <div style="height:100%"
+                                        class="flex-1 flex flex-direction-column flex-1 flex-justify-content-space-between">
+                                        <div class="flex text-bold flex-direction-column" style="margin:5px">
+                                            <img width="50px" height="50px" alt="class_blackboard"
+                                                src="../../../assets/img/lession.svg"
+                                                style="max-width:inherit;width:50px;height:50px">
+                                            <span style="margin:-5px 0px"><label>Lessons per
+                                                    Student</label></span><span>34.9 lesson average</span>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="panel-large-body-padding shadow bg-white mt-3 pt-2 pb-3" >
+
+                        <ejs-schedule #schedule height="700px" ref="ScheduleObj" [(selectedDate)]="selectedDate"
+                            (actionComplete)="onActionComplete($event)" (popupOpen)="onPopupOpen($event)"
+                            [rowAutoHeight]="rowAutoHeight" [eventSettings]="eventSettings" currentView="Week">
+                            <e-views>
+                                <e-view option="Day"></e-view>
+                                <e-view option="Week" id="monthClickid"></e-view>
+                                <e-view option="Month"></e-view>
+
+
+                            </e-views>
+                          
+
+                        <ng-template #eventSettingsTemplate let-data>
+                            <div>
+                              <div class="time" >
+                                {{data.StartTime | date: 'medium'}}
+                              </div>
+                            </div>
+                
+                          </ng-template>
+                        </ejs-schedule>
+                    </div>
+
+                    <!-- <div class="panel-large-body-padding shadow bg-white mt-3 pt-2 pb-3">
+
+                        <div class="container">
+                            <div class="col-md-12 p-0">
+                                <h2>Teaching Expertise</h2>
+                                <label>Teaches</label>
+                            </div>
+                            <div class="bgGray">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Beginner</p>
+                                        <p>Upper Beginner</p>
+                                        <p>Intermediate</p>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Upper Intermediate</p>
+                                        <p>Advanced</p>
+                                        <p>Upper Advanced</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-3">
+
+                                <label>Accents</label>
+                            </div>
+                            <div class="bgGray">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>{{userData.accents | titlecase}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 p-0 mt-3">
+
+                                <label>Lessons include</label>
+                            </div>
+                            <div class="bgGray">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p *ngFor="let item of userData.lessons">{{item}}</p>
+                                        
+                                    </div>
+                                   
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 p-0 mt-3">
+
+                                <label>Subjects</label>
+                            </div>
+                            <div class="bgGray">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p *ngFor="let item of userData.subjects">{{item}}</p>
+                                       
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    <div class="panel-large-body-padding shadow bg-white mt-3">
+                        <div class="panel-body p-4" id="section-analytic-badges">
+                            <h2>Certifications</h2>
+                            <div class="row">
+                                <div class="panel-body" id="section-resume">
+                                    <div class="margin-bottom-md">
+                                        <h3 class="flex flex-direction-row flex-align-center">
+                                            <img width="30px" height="30px" alt="briefcase"
+                                                src="https://cdn.verbling.com/static/svg/icons8/29952406d8949e57b7ac5aaf568776f0.icons8-briefcase.svg"
+                                                class="text-primary margin-right-md"
+                                                style="max-width: inherit; width: 30px; height: 30px;">
+                                            <span>Work Experience</span>
+                                        </h3>
+                                        <div class="ResumeItem margin-bottom-md">
+                                            <div class="row mb-3" *ngFor="let certificate of userData.certifications">
+                                                <div class="col-md-2">
+                                                    <div class="text-left"><span >{{certificate.StartYear}}-{{certificate.EndYear}} </span></div>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <!-- <div><strong>Private Tutor</strong></div> -->
+                                                
+                                                    <div><span>{{certificate.name}}</span> </div>
+                                                    <div><i> {{certificate.description}}</i></div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-large-body-padding shadow bg-white mt-3">
+                    <div class="panel-body" id="section-analytic-badges">
+                        <h2>Ratings</h2>
+                        <div class="row">
+                            <!-- <div class="col-md-12">
+                                <div class="bgGray p-3">
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/gif.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Fun</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/motivation.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Motivation Guru</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center blue">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/excillant.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center bluebg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Excellent Materials</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center hardBlue">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/conversion.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center hardBluebg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Great Conversation</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center hardBlue">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/exam.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center hardBluebg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Exam Coach</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/bussiness.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Business Expert</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/writting.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Writing Coach</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center green">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/great.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center greenbg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Great With Beginners</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center green">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/great.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center greenbg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Great For Intermediate Students</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center red">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/greatfor.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center redbg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Great For Advanced Students</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center blue">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/excent.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center bluebg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Accent Reduction</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center green">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/teach.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center greenbg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Tech Savvy</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center blue">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/extramile.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center bluebg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Goes the Extra Mile</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center blue">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/grammer.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center bluebg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Grammar Expert</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center red">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/meddical.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center redbg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Great for Medical Professionals</div>
+                                    </div>
+                                    <div class="boxSmall">
+                                        <div
+                                            class="Badge__inner flex flex-direction-row flex-justify-content-center flex-align-center green">
+                                            <img width="35px" height="35px" alt="confetti"
+                                                src="../../../assets/img/cultur.svg"
+                                                style="max-width: inherit; width: 35px; height: 35px;">
+                                            <div
+                                                class="Badge__notification flex flex-align-center flex-justify-content-center greenbg">
+                                                356</div>
+                                        </div>
+                                        <div class="Badge__name">Cultural Insights</div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-md-12 star mt-3">
+                                <i class="text-warning fa fa-star mr-1" style="font-size: 30px;"></i>
+                                <i class="text-warning fa fa-star mr-1" style="font-size: 30px;"></i>
+                                <i class="text-warning fa fa-star mr-1" style="font-size: 30px;"></i>
+                                <i class="text-warning fa fa-star mr-1" style="font-size: 30px;"></i>
+                                <i class="text-warning fa fa-star mr-1" style="font-size: 30px;"></i>
+                                <h2 class="average mb-1 mt-2">5.0 Average </h2>
+                                <h4 class="rating"> 1722 ratings, 104 students</h4>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="bg-gray p-3 border-dashed-red">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3DItaru%2520Yasumura%26background%3D1cde1c%26size%3D600%26color%3Dffffff"
+                                                class="ProfImg" alt="Profile Picture">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <a>Itaru </a>
+                                            <p>February 24, 2020 • Lessons: 439</p>
+                                            <p class="descText">I have had roughly 100 lessons with Kay and without a
+                                                doubt, he is one of the best German teachers on this platform.</p>
+                                            <p class="descText">Firstly, he is incredibly good at explaining complicated
+                                            </p>
+                                            <a class="read">Read More</a> <br />
+                                            <a class="translate">Translate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row mt-3">
+                            <div class="col-md-4 col-12">
+                                <div class="form-group--focuser form-group">
+                                    <label>Search</label>
+                                    <span class="input-group--focuser input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-search"></i></span>
+                                        <input placeholder="Search..." class="form-control undefined" numrows="1"
+                                            type="text" value="">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="form-group--focuser form-group">
+                                    <label>Language</label>
+                                    <div class="CustomSelect CustomSelect--full-width">
+                                        <select filter="en,de,es" class="form-control--focuser form-control"
+                                            style="text-transform: capitalize;">
+                                            <option value="any">Any language</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <div class="form-group--focuser form-group">
+                                    <div>
+                                        <label>Sort</label>
+                                    </div>
+                                    <div class="CustomSelect CustomSelect--full-width">
+                                        <select class="form-control--focuser form-control">
+                                            <option value="score">Sort by Relevance</option>
+                                            <option value="date_created-desc">Sort by Newest</option>
+                                            <option value="date_created-asc">Sort by Oldest</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="row">
+                            <div class="col-md-12">
+                                <div class="bg-white p-3">
+                                    <div class="row align-item-center">
+                                        <div class="col-md-3">
+                                            <img src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3DItaru%2520Yasumura%26background%3D1cde1c%26size%3D600%26color%3Dffffff"
+                                                class="ProfImg" alt="Profile Picture">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <a>Itaru </a>
+                                            <p>February 24, 2020 • Lessons: 439</p>
+                                            <p class="descText">I have had roughly 100 lessons with Kay and without a
+                                                doubt, he is one of the best German teachers on this platform.</p>
+                                            <p class="descText">Firstly, he is incredibly good at explaining complicated
+                                            </p>
+                                            <a class="read">Read More</a> <br />
+                                            <a class="translate">Translate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+
+                </div>
+                <!-- <div class="box mt-3">
+                    <h2>See more teachers who teach:</h2>
+                    <a class="tagLink">Reading Exercises, </a>
+                    <a class="tagLink">Reading Comprehension, </a>
+                    <a class="tagLink">Grammar Development, </a>
+                    <a class="tagLink">Accent Reduction, </a>
+                    <a class="tagLink">Vocabulary Development, </a>
+                    <a class="tagLink">Writing Correction </a>
+                    <p class="mt-3 fsCls">German Tutors / <b>Kay</b></p>
+                </div> -->
+            </div>
+            <div class="col-md-4" *ngIf="planData.length>0">
+                <div class="panel panel-default panel-trial link-normalize margin-bottom-md shadow bg-white">
+                    <div class="panel-heading" style="padding: 10px;">
+                        <div class="panel-title">
+                            <h3 class="no-margin-top no-margin-bottom mb-0">
+                                <span>Free consultation</span>
+                            </h3>
+                            <small>One time, 15 minutes</small>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="link-normalize margin-bottom-xl" data-cy="verb_Teacher__trialLessonPackage">
+                            <a>
+                                <div class="row teacher-pricing" *ngFor="let item of planData">
+                                    <div class="col-6 text-left" *ngIf="item.planType=='free'">
+                                        <div>
+                                            <div>Free consultation</div>
+                                            <small class="text-italic text-danger"></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 text-right" *ngIf="item.planType=='free'">
+                                        <div class="session-rate">
+                                            <span class="text-large text-bold">Free</span>
+                                        </div>
+                                        <div class="min">15 min</div>
+                                    </div>
+
+
+                                </div>
+                            </a>
+                        </div>
+                        <button type="button" *ngIf="user?.role!=='teacher'" (click)="checkSubscription(userData,'free')" class="btn btn-primary w-100"
+                            >
+
+                            Book Free Consultation </button>
+                    </div>
+                </div>
+
+                <div class="panel panel-default panel-trial link-normalize margin-bottom-md shadow bg-white mt-3">
+                    <div class="panel-heading" style="padding: 10px;">
+                        <div class="panel-title">
+                            <h3 class="no-margin-top no-margin-bottom mb-0">
+                                <span>Paid Lessons</span>
+                            </h3>
+                            <small>45 minutes</small>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="link-normalize margin-bottom-xl" data-cy="verb_Teacher__trialLessonPackage">
+                            <a *ngFor="let item of planData">
+                                <div class="row teacher-pricing" *ngIf="item.planType=='paid'">
+                                    <div class="col-4 text-left">
+                                        <div class="less">{{item.noOflessons}} Lessons</div>
+
+                                    </div>
+                                   
+                                    <div class="col-8 text-right">
+                                        <div class="session-rate">
+                                            <span class="text-large ">{{item.price | currency}}</span>
+                                        </div>
+                                        <div class="min">45 min</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" *ngIf="user.role!='teacher'"
+                            [routerLink]="[ '/teachers/checkout']" [queryParams]="{planType: 'paid'}">
+                            {{user.subscription_id!=''? 'Upgrade' : 'Book Now'}}
+                            </button>
+                     
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <p> akjsfiha sof oasfo aysof yaso fyoasy oyo y</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div>
+      </ng-template>

@@ -1,0 +1,179 @@
+<div class="banner">
+    <div class="boxAlign">
+    <h1>Apply to Teach</h1>
+    <p>Earn money teaching your language online. Anytime. Anywhere.</p>
+    <button class="btn btn-primary mt-3" (click)="open(content)">Apply now</button>
+</div>
+</div>
+<div class="bg-gray">
+    
+<div class="container pt-5 ">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="shadow p-2">
+                <div class="flexSection">
+                <img src="https://cdn.verbling.com/static/svg/icons8/18aa8c3b574734b89ea56ac465bcfd59.icons8-cash_in_hand.svg" alt="">
+                <div class="desc-text ml-2"> 
+                <h3 class="heading">Earn money</h3>  
+                  <p class="desc">Set your own hourly rates and cash out your earnings anytime.</p>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+                <div class="shadow p-2">
+                    <div class="flexSection">
+                    <img src="https://cdn.verbling.com/static/svg/icons8/2ff29f72b10f9eddac8658589cedd72d.icons8-globe.svg" alt="">
+                    <div class="desc-text ml-2"> 
+                    <h3 class="heading">Work anywhere</h3>  
+                      <p class="desc">Teach from home or any other convenient location of your choice.</p>
+                </div>
+            </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                    <div class="shadow p-2">
+                        <div class="flexSection">
+                        <img src="https://cdn.verbling.com/static/svg/icons8/1e7d4c85192f24236781f4bbe72bdd04.icons8-clock.svg" alt="">
+                        <div class="desc-text ml-2"> 
+                        <h3 class="heading">Teach anytime</h3>  
+                          <p class="desc">Adjust your personal availability anytime on your calendar.</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                        <div class="shadow p-2">
+                            <div class="flexSection">
+                            <img src="https://cdn.verbling.com/static/svg/icons8/8c823fb95a34df65d6c182c2a1cf7d50.icons8-video_conference.svg" alt="">
+                            <div class="desc-text ml-2"> 
+                            <h3 class="heading">Flexibility</h3>  
+                              <p class="desc">Teach in any capacity: full-time, part-time, or just occasionally.</p>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                            <div class="shadow p-2">
+                                <div class="flexSection">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/69d24405d412c4210b67454e986e3f78.icons8-groups.svg" alt="">
+                                <div class="desc-text ml-2"> 
+                                <h3 class="heading">International community</h3>  
+                                  <p class="desc">Teach international students from every corner of the world.</p>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                                <div class="shadow p-2">
+                                    <div class="flexSection">
+                                    <img src="https://cdn.verbling.com/static/svg/icons8/8b224e39333eda9386a07ac335c0651b.icons8-hearts.svg" alt="">
+                                    <div class="desc-text ml-2"> 
+                                    <h3 class="heading">Gain followers</h3>  
+                                      <p class="desc">Build up a community of followers while building your brand and identity.</p>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+    </div>
+</div>
+</div>
+<svg viewBox="0 0 1440 120" style="display: block; background-color: rgb(242, 242, 242);"><g id="section-transition-svg"><polygon fill="#fff" points="1440 0 1440 120 0 120 0 120"></polygon></g></svg>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-3 mb-3">
+                <video width="100%" height="500" controls>
+                        <source src="movie.mp4" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                      </video>
+        </div>
+    </div>
+</div>
+<svg viewBox="0 0 1440 120" style="display: block; background-color: rgb(255, 255, 255);"><g id="section-transition-svg"><polygon fill="#efefef" points="1440 0 1440 120 0 120 0 120"></polygon></g></svg>
+<div class="bg-gray">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto mb-4 mt-4">
+            <h3 class="genrel mb-4">Frequently Asked Questions</h3>
+            <h3 class="genrel mb-4">General</h3>
+
+          <app-faq-page></app-faq-page>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title mb-0" id="modal-basic-title">Apply Now</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+                <form [formGroup]="teachForm" (ngSubmit)="onSubmit()">
+                        <div class="AppFormLeft"> 
+                            <div class="form-group mb-2">
+                            <div class="position-relative">
+                                <mat-form-field appearance="outline">
+                                    <input type="text" matInput placeholder="First Name" formControlName="firstName"> 
+                                </mat-form-field>
+                                <mat-error *ngIf="submitted && f.firstName.errors && f.firstName.errors.required">First name is required
+                                </mat-error>
+                              </div>
+                              
+                            </div>
+                            <div class="form-group mb-2">
+                                <div class="position-relative">
+                                    <mat-form-field appearance="outline">
+                                        <input type="text" matInput placeholder="Last Name" formControlName="lastName"> 
+                                    </mat-form-field>  
+                                    <mat-error *ngIf="submitted && f.lastName.errors && f.lastName.errors.required">Last name is required
+                                    </mat-error>  
+                                  </div> 
+                                </div>
+                                <div class="form-group mb-2"> 
+                                    <div class="position-relative">
+                                        <mat-form-field appearance="outline">
+                                            <input type="email" matInput placeholder="Email" formControlName="email">   
+                                        </mat-form-field> 
+                                        <mat-error *ngIf="submitted && f.email.errors && f.email.errors.required">Email is required</mat-error>
+                                        <mat-error *ngIf="submitted && f.email.errors && f.email.errors.pattern">Email is invalid</mat-error>
+                              
+                                </div> 
+                            </div>
+                            <div class="form-group mb-2"> 
+                                    <div class="position-relative">
+                                        <mat-form-field appearance="outline">
+                                            <input type="number" matInput placeholder="Phone Number" formControlName="number">    
+                                        </mat-form-field> 
+                                        <mat-error *ngIf="submitted && f.number.errors && f.number.errors.required">Number is required</mat-error>
+                                        <mat-error *ngIf="submitted && f.number.errors && f.number.errors.pattern">Number is invalid</mat-error>
+                              
+                                </div> 
+                            </div>
+                      
+                        
+
+                        
+                            
+                            <button class="btn btn-primary btn-block shadow border-0 py-2 text-uppercase w-100">
+                               Submit
+                            </button> 
+                            </div>
+                          
+                            </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div> -->
+      </ng-template>

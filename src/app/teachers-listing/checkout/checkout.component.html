@@ -1,0 +1,272 @@
+<ngx-spinner></ngx-spinner>
+<div class="menepage">
+<div class="container">
+<div class="form-row">
+    <div class="col-md-6">
+        <h1 class="topline mt-4">Checkout</h1>
+        <div class="leftdiv1">
+       <div class="lessonpage">
+           <h1 class="mb-0">Lessons</h1>
+           <h4 class="mb-0">How many lessons would you like to purchase?</h4>
+       </div>
+
+       <div class="rowpage p-3" >
+           <div class="form-row" *ngFor="let item of planData">
+              <ng-container *ngIf="item.status=='active'">
+            <div class="col-md-6" >
+               <div class="leftside">
+               <p> <input type="radio" (click)="selectLesson(item)" name="flexRadioDefault" id="flexRadioDefault1">{{item.noOflessons}} Lessons</p>
+               </div>
+            </div>
+            <div class="col-md-6" *ngIf="item.status=='active'" >
+               <div class="leftside">
+               <p class="text-right">{{item.price | currency}}/45 min</p>
+               </div>
+            </div>
+         </ng-container>
+         </div>
+         <mat-error *ngIf="showPlanMessage">Please select number of lessons</mat-error>
+         <!-- <div class="form-row">
+            <div class="col-md-6">
+               <div class="leftside">
+             <p> <input type="radio" name="flexRadioDefault" id="flexRadioDefault1">5.Lesson</p>
+               </div>
+            </div>
+            <div class="col-md-6">
+             <div class="leftside">
+             <p class="text-right"><span class="save22">Save 3%</span> $2,952.65/hour</p>
+             </div>
+          </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6">
+               <div class="leftside">
+             <p> <input type="radio" name="flexRadioDefault" id="flexRadioDefault1">10.Lesson<span class="rec"> (Recommended)</span></p>
+               </div>
+            </div>
+            <div class="col-md-6">
+             <div class="leftside">
+             <p class="text-right"><span class="save22">Save 6%</span> $2,861.33/hour</p>
+             </div>
+          </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6">
+               <div class="leftside">
+             <p> <input type="radio" name="flexRadioDefault" id="flexRadioDefault1">20.Lesson</p>
+               </div>
+            </div>
+            <div class="col-md-6">
+             <div class="leftside">
+             <p class="text-right"><span class="save22">Save 9%</span> $2,770.01/hour</p>
+             </div>
+          </div>
+          </div> -->
+         </div>
+    </div>
+            
+       <div class="leftdiv2 shadow">
+            <div class="lessonpage">
+                  <h1 class="mb-0 text-primary">Payment</h1>
+                  <!-- <h4 class="mb-0">Pick a payment method</h4> -->
+              </div>
+           <div class="leftpage2 p-3"> 
+               <!-- <div class="flexpage  d-flex">
+               <p> <input type="radio" name="flexRadioDefault" id="flexRadioDefault1">Add new card</p>
+                 <img src="https://mms.businesswire.com/media/20210126006164/en/854905/5/Visa+Brand+Mark+-+Blue+-+900x291.jpg">
+               
+                <img src="https://cdn.vox-cdn.com/thumbor/VKD3KfczL8xi89_n32rmbjTpdlg=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13674554/Mastercard_logo.jpg">
+            
+               
+                <img src="https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/en_in-smart-earn-credit-card.png">
+            
+            
+                <img src="https://blackcatcard.com/images/card-main.png">
+            
+               </div> -->
+
+               <div class="cards">
+                  <div class="profile_form" >
+                     <!-- <div class="form-group">
+                         <label class="mb-0">Name on card</label>
+                     <mat-form-field appearance="outline">
+                         <mat-label>Joe Smith</mat-label>
+                         <input type="text"   matInput  >
+                         <mat-error *ngIf="submitted && f.name.errors && f.name.errors.required">name is required</mat-error> 
+
+                       </mat-form-field>
+                     </div> -->
+                     <div class="form-group">
+                         <label class="mb-0">Card number</label>
+                     <mat-form-field appearance="outline">
+                         <!-- <mat-label>1234 1234 1234 1234</mat-label> -->
+                         <input matInput type="text" [(ngModel)]="card.card_number" name="card_number" min="0"
+                         onKeyPress="if(this.value.length==19) return false;"
+                         class="form-control  search-input w-100" placeholder="xxxx-xxxx-xxxx-xxxx"
+                         #cardNo="ngModel" [patterns]="customPatterns" mask="0000-0000-0000-0000"
+                         required>
+                      
+                       </mat-form-field>
+                       <mat-error *ngIf="submitted && cardNo.invalid ">
+                        Card number is required
+                    </mat-error>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4">
+
+                      
+                     <div class="form-group">
+                         <label class="mb-0">Expiry month</label>
+                     <mat-form-field appearance="outline">
+                         
+                         <input matInput type="number" [(ngModel)]="card.exp_month" min="1" max="12"
+                         class="search-input w-100"
+                         onKeyPress="if(this.value.length==2) return false;"
+                         (change)="getMonth()" placeholder="mm" #month="ngModel" required
+                         [ngClass]="{ 'is-invalid': submitted && month.invalid }">
+                      
+                       </mat-form-field>
+                       <mat-error *ngIf="submitted && month.invalid">
+                        Month is required
+                    </mat-error>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+
+                      
+                     <div class="form-group">
+                         <label class="mb-0">Expiry year</label>
+                     <mat-form-field appearance="outline">
+                         
+                        <input matInput type="number" [(ngModel)]="card.exp_year" min="2021"
+                        placeholder="yyyy" maxlength="4" class="search-input w-100"
+                        onKeyPress="if(this.value.length==4) return false;" #expyear="ngModel"
+                        required [ngClass]="{ 'is-invalid': submitted && expyear.invalid }">
+                      
+                       </mat-form-field>
+                       <mat-error *ngIf="submitted && expyear.invalid">
+                        Year is required
+                    </mat-error>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="form-group">
+                        <label class="mb-0">Security Code </label>
+                    <mat-form-field appearance="outline">
+                        <!-- <mat-label>CVC</mat-label> -->
+                        <input matInput type="text" placeholder="cvv" [(ngModel)]="card.cvc"
+                        class="search-input w-100" maxlength="4"
+                        oninput="javascript: isNumber(this);" #cvcNO="ngModel" required>
+                     
+                      </mat-form-field>
+                      <mat-error *ngIf="submitted && cvcNO.invalid">
+                        Cvv is required
+                    </mat-error>
+                    </div>
+                  </div>
+                  <div class="text-center w-100">
+                     <img class="social" src="https://mms.businesswire.com/media/20210126006164/en/854905/5/Visa+Brand+Mark+-+Blue+-+900x291.jpg">
+                     <img class="social" src="https://cdn.vox-cdn.com/thumbor/VKD3KfczL8xi89_n32rmbjTpdlg=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13674554/Mastercard_logo.jpg">
+                     <img class="social" src="https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/en_in-smart-earn-credit-card.png">
+                     <img class="social" src="https://blackcatcard.com/images/card-main.png">
+                     <p><i class="fa fa-lock mr-2" aria-hidden="true"></i> Secure transaction</p>
+                  </div>
+               </div>
+                     
+            </div>
+               </div>
+               <!-- <div class="imgimg">
+               <p> <input type="radio" name="flexRadioDefault" id="flexRadioDefault1"><img src="https://www.drupal.org/files/project-images/paypal_logo.jpg"></p>
+            </div> -->
+            </div>
+       </div>
+
+</div>
+
+
+    <div class="col-md-6">
+        
+         <div class="rightpage text-center mt-4">
+             <img src="assets/img/logo.png">
+             
+         </div>
+            
+         <div class="rightdiv2 ">
+             <div class="kaypage">
+            <h3 class="text-center" *ngIf="planType=='Individual'"><b>Individual Class fees</b></h3>
+            <h3 class="text-center" *ngIf="planType=='Lessons'"><b>Subscription fees</b></h3>
+            </div>
+            <div class="form-row">
+                <!-- <div class="col-md-6">
+                   <div class="rightside">
+                 <p>Product</p>
+                   </div>
+                </div> -->
+                <div class="col-md-6" *ngIf="selectedPlan.noOflessons">
+                    <div class="rightside">
+                 <p class="text-right">Price</p>
+                 </div>
+              </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6" >
+                    <div class="rightside" *ngIf="selectedPlan.noOflessons">
+                 <h4 class="mb-0" *ngIf="planData.length>0">45-Minute Lesson x {{selectedPlan.noOflessons}}</h4>
+                 <h4 class="mb-0" *ngIf="planData.length==0">45-Minute Lesson x 1</h4>
+                 <!-- <p *ngIf="planData.length>0"><span class="app">Apply Coupon</span></p> -->
+                
+                   </div>
+                </div>
+                <div class="col-md-6" *ngIf="selectedPlan.noOflessons">
+                    <div class="rightside">
+                 <p class="text-right">{{totalPrice | currency}}</p>
+                 </div>
+              </div>
+              </div>
+               <!-- <div class="form-row">
+                  <div class="col-md-6">
+                     <div class="rightside">
+                     <p>Free<span class="freeapp">?</span></p>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="rightside">
+                  <p class="text-right">$2,289.06</p>
+                  </div>
+               </div>
+               </div> -->
+              <div class="form-row">
+                <div class="col-md-6">
+                    <div class="rightside">
+                    <p>Total</p>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="rightside">
+                 <h4 class="text-right mb-0">{{totalPrice | currency}}</h4>
+                 <!-- <h4 class="text-right mb-0">$USD $406.08</h4> -->
+                 <!-- <p class="text-right">All purchases are in USD.</p> -->
+                 </div>
+              </div>
+              </div>
+              
+              <div class="buttonbox text-center">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+              <a href="javascript:void(0)" (click)="addCard()">Complete Secure Checkout</a>
+              </div>
+
+              <div class="imgsrc mt-2">
+                  <img src="https://www.kindpng.com/picc/m/25-258244_mcafee-secure-icon-png-transparent-png.png ">
+                  <img class="margin-sm" src="https://cdn.verbling.com/static/img/checkout/3bc9251c4c9e252f7c4fbfb350b72012.norton-secured-seal.png" style="height: 50px;">
+                  <!-- <img class="margin-sm" src="https://cdn.verbling.com/static/img/checkout/54d52a800ca107dd27b6ae8d7960088f.paypal-verfied-seal.jpg" style="height: 50px;"> -->
+              </div>
+
+         </div>
+         <small>All purchases are in USD. Foreign transaction fees might apply, according to your bank's policies.</small> <br /> <br />
+          <small>  You will be able to schedule your lessons after purchase. Lessons must be scheduled within six months of purchase date. Refunds are in Verbling store credit only. Verbling credit has no cash value.</small>
+        </div>
+    </div>
+</div>
+</div>

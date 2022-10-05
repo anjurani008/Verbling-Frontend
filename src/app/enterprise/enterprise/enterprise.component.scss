@@ -1,0 +1,230 @@
+.flex.flex-align-center.iamge {
+    background: url(../../../assets/img/main_image.jpg) no-repeat center center;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+}
+.extra-panel-padding .panel-body {
+    padding: 20px;
+    background: #ffff;
+    border-radius: 10px;
+}
+.btn.btn-tall {
+    background: #e3107d;
+    color: #ffff;
+    padding: 11px;
+}
+
+h1.no-margin-bottom {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.35;
+}
+
+p.text-large {
+    font-size: 18px;
+    letter-spacing: -0.015em;
+    line-height: 0;
+}
+.bg_class {
+    text-align: center;
+}
+h2.txcls.mt-3 {
+    font-weight: 600;
+}
+h1.txtcls {
+    font-weight: 600;
+}
+.videoimg{
+    width: 100%;
+}
+p.paraclss {
+    font-size: 16px;
+}
+img.teacher {
+    width: 55px;
+}
+    h1.textclass {
+        font-weight: 600;
+    }
+    .main {
+        text-align: center;
+    }
+    span.bordercss.border-bottom {
+        border-bottom: 1px solid #ec64aa !important;
+    }
+    img.brandclass {
+        width: 153px;
+    }
+    .row.maindivclass {
+        text-align: center;
+    }
+    .Choose_class {
+        text-align: center;
+    }
+    .bg_class {
+        background: #f2f2f2;
+    }
+    .rwclass{
+        background: #f2f2f2;
+
+    }
+    .bbgimg{
+        background: url(../../../assets/img/bbgimg.jpg) no-repeat center center;
+    // background-size: cover !important;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    object-fit: cover;
+    // height: 50vh;
+    width: 100%;
+        color: #fff;
+    font-size: 22px;
+    background-size: 100%;
+    position: relative;
+    padding: 130px 32px;
+   
+    }
+    .bbgimg::before {
+        content: "";
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(0 0 0 / 77%);
+        position: absolute;
+    }
+    img.imcls {
+        width: 100%;
+        max-width: 37px;
+    }
+    .customer{
+        font-size: 18px;
+    }
+    .maincls{
+        align-items: center;
+    }
+
+    .txclss{
+        font-size: 30px;
+        font-weight: 600;
+    }
+.Frequently{
+    font-weight: 600;
+   
+}
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    color: #666e7e;
+    font-weight: 700;
+}
+.txcls{
+    font-weight: 600;
+}
+
+
+    .example-action-buttons {
+        padding-bottom: 20px;
+      }
+      
+      .example-headers-align .mat-expansion-panel-header-title,
+      .example-headers-align .mat-expansion-panel-header-description {
+        flex-basis: 0;
+      }
+      
+      .example-headers-align .mat-expansion-panel-header-description {
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .example-headers-align .mat-form-field + .mat-form-field {
+        margin-left: 8px;
+      }
+      @media screen and (min-width: 375px) {
+        p.text-large {
+            line-height: 24px !important;
+        }
+        .col-12.col-md-6.incls {
+            margin-top: -39px !important;
+        }
+
+        .flex.flex-align-center.iamge {
+            height: 107vh;
+        }
+
+        .col-md-4.bg-white.text-left {
+            padding: 34px;
+        }
+
+        .position-relative.text-center.txclss {
+            line-height: 38px;
+        }
+
+      }
+
+
+      @media screen and (min-width: 360px) {
+
+p.text-large.mb-4 {
+    line-height: 22px;
+}
+
+.flex.flex-align-center.iamge {
+    height: 117vh !important;
+}
+
+.position-relative.text-center.txclss {
+    line-height: 33px;
+}
+
+.col-md-4.bg-white.text-left {
+    padding: 43px;
+}
+      }
+
+
+      @media screen and (min-width: 320px) {
+        p.text-large.mb-4 {
+            line-height: 21px;
+        }
+
+        .flex.flex-align-center.iamge {
+            height: 134vh;
+        }
+
+        .col-md-4.bg-white.text-left {
+            padding: 32px;
+        }
+
+        .position-relative.text-center.txclss {
+            line-height: 28px;
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+      
+
+        .flex.flex-align-center.iamge {
+            height: 96vh !important;
+        }
+
+      }
+
+      @media screen and (min-width: 280px) {
+        p.text-large.mb-4 {
+            line-height: 20px;
+        }
+
+        .flex.flex-align-center.iamge {
+            height: 122vh;
+        }
+
+        .position-relative.text-center.txclss {
+            line-height: 30px;
+        }
+
+        .col-md-4.bg-white.text-left {
+            padding: 27px;
+        }
+      }

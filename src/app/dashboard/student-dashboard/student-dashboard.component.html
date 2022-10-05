@@ -1,0 +1,611 @@
+<ngx-spinner></ngx-spinner>
+
+
+<div class="bg_maind tabs">
+
+  <mat-tab-group mat-align-tabs="start" (selectedTabChange)="tabClick($event)">
+    <mat-tab label="Dashboard" class="profile_tab">
+      <div class="banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex align-item-center">
+                <img class="userImg"
+                  src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3Dgoldy%26background%3D943afa%26size%3D600%26color%3Dffffff"
+                  alt="">
+                <div class="detail ml-3">
+                  <h1 class="mb-2">{{user.fullName | titlecase}}</h1>
+                  <p>
+                    <!-- <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1ee-1f1f3.png?v=2.2.7" class="flag"
+                      alt="">  -->
+                    {{user.country | titlecase}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 text-right">
+              <!-- [routerLink]="['/teacher-dashboard/list']" (click)="openDialog('lessons', 'event')"-->
+              <button class="btn btn-primary mr-2" [routerLink]="['/teachers/list']"> <i class="fa fa-plus mr-2"></i>
+                Add
+                Lessons</button>
+              <!-- (click)="openDialog('slot', 'event')" -->
+              <!-- <button class="btn btn-primary" *ngIf="user.role=='teacher'" [routerLink]="['/teacher-dashboard/list']" > <i class="fa fa-plus mr-2"></i> Add
+                Slot
+              </button> -->
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+      <div class="container mt-4 mb-4">
+        <div class="row">
+          <div class="col-md-4 order">
+            <div class="card p-0 shadow mb-4" *ngIf="userData.subscription_id">
+              <div class="card-header">
+                Purchased Subscription
+              </div>
+
+              <div class="text student pt-3">
+                <div class="schedule">
+                  <h2>Package Name</h2>
+                  <b>{{userData.planName | titlecase}}</b>
+
+                </div>
+                <div class="schedule">
+
+                  <h2>Total Lesson Purchases</h2>
+                  <b>{{userData.noOflessons}}</b>
+                </div>
+                <div class="schedule">
+
+                  <h2>Remaining Lessons</h2>
+                  <b>{{userData.remainingLessons}}</b>
+                </div>
+                <div class="schedule">
+                  <h2>Valid Upto</h2>
+                  <b>{{userData.validupto | date}}</b>
+                </div>
+                <div class="text-right p-3">
+                  <button class="btn btn-primary" [routerLink]="[ '/teachers/checkout']"
+                    [queryParams]="{planType: 'paid'}">Upgrade </button>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="card p-0 shadow">
+              <div class="card-header">
+                Schedules
+              </div>
+
+              <div class="text-center justify pt-3">
+                <div class="schedule ">
+                  <h2>{{scheduleCount.scheduled?scheduleCount.scheduled:0}}</h2>
+                  <b>Scheduled</b>
+                </div>
+                <div class="schedule">
+                  <h2>{{scheduleCount.needs_scheduled}}</h2>
+                  <b>Needs Scheduled</b>
+                </div>
+                <div class="schedule">
+                  <h2>{{scheduleCount.past}}</h2>
+                  <b>Past</b>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="card p-0 mt-3">
+              <div class="card-header">
+                Weekly Progress
+              </div>
+              <div class="card-body pb-1">
+                <p class="desc">Only languages marked as "learning" will show here.</p>
+              </div>
+            </div> -->
+
+            <!-- <div class="card p-0 mt-3">
+              <div class="card-header">
+                Lesson History
+              </div>
+              <div class="card-body pb-1">
+                <p class="desc">celendar</p>
+              </div>
+            </div> -->
+
+            <!-- <div class="card p-0 mt-3">
+              <div class="card-header">
+                Quick Links
+              </div>
+              <div class="card-body pb-1">
+                <a class="link">Equipment check</a>
+                <a class="link">Demo lesson</a>
+                <a class="link">Desktop notifications</a>
+                <a class="link">Sync calendar</a>
+                <a class="link">Settings</a>
+                <a class="link">Help center</a>
+              </div>
+            </div> -->
+          </div>
+          <div class="col-md-8 order">
+            <div class="box">
+              <h4 class="lesson">Lesson</h4>
+              <mat-tab-group class="remove">
+                <!-- <mat-tab label="List" label="Lessons"> -->
+                <!-- <mat-tab-group> -->
+                <mat-tab label="List">
+                  <div class="d-flex mt-3 option_list">
+                    <select name="lessons" id="lessons" (change)="changeFilter($event.target.value)"
+                      class="form-control width mr-3">
+                      <option value="">All</option>
+                      <option value="booked">Booked</option>
+                      <option value="rescheduled">Reschedule</option>
+                      <option value="cancelled">Cancel</option>
+
+
+                    </select>
+
+                    <div class="form-group has-search mb-0">
+                      <span class="fa fa-search form-control-feedback" (click)="getScheduledData()"></span>
+                      <input type="text" class="form-control" [(ngModel)]="search" (keyup)="getScheduledData()"
+                        placeholder="Search">
+                    </div>
+                    <button class="btn btn-primary ml-2" *ngIf="search" (click)="clearValue()"><i
+                        class="fa fa-close"></i> </button>
+                  </div>
+
+                  <div class="card text-center border p-4 mt-3" *ngIf="scheduledData.length==0">
+                    <span>
+                      <img class="cal-img"
+                        src="https://cdn.verbling.com/static/svg/icons8/8110dc645330172da02b881d21d8ee28.icons8-calendar.svg"
+                        alt="">
+                      <h2>Schedule a Lesson</h2>
+                      <p class="mb-3">You have no scheduled lessons. Select a teacher to get started.</p>
+                      <button class="btn btn-primary w-auto shadow" [routerLink]="['/teachers/list']">Find a
+                        Teacher</button>
+                    </span>
+
+
+
+
+                    <!-- <table *ngIf="scheduledData.length>0" class="table table-striped table-hover appointment-action-table table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="title">Teacher Name</th>
+                                <th class="start-at">
+                                  Date Time
+                                </th> 
+                                </th> --
+                                <th class="Status">Status</th> 
+  
+                              </tr>
+                            </thead>
+  
+                            <tbody>
+                              <tr *ngFor="let event of scheduledData">
+                                <td class="text-capitalize">
+                                  {{event.teacherId.fullName | titlecase}}
+                                </td>
+                                <td>
+                                  {{event.startDate}}
+                                </td>
+   
+                                <td>
+                                    {{event.status | titlecase}}
+                                  </td>
+   
+  
+                               
+                              </tr>
+   
+                            </tbody>
+                          </table> -->
+
+                  </div>
+                  <div class="shadow d-flex justify-content-between p-3 w-100 mt-3 mb-3"
+                    *ngFor="let event of scheduledData">
+                    <div class="d-flex flex-grow-1">
+                      <div class="event_img mr-3">
+                        <img class="teacher-img w-100" *ngIf="!event.teacherId.image" src="assets/img/user.png" alt="">
+                        <img class="teacher-img w-100" *ngIf="event.teacherId.image"
+                          src="{{_host}}{{event.teacherId.image}}" alt="">
+                      </div>
+                      <div class="d-flex flex-grow-1 flex-column">
+                        <h4 class="mb-0 text-primary"><b>Scheduled</b></h4>
+                        <h3 class="mb-0">{{event.startTime}}</h3>
+                        <h5 class="mb-0"> {{event.startDate | date}}</h5>
+                        <p class="mb-0"> {{event.status | titlecase}}</p>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-grow-1 justify-content-between">
+                      <div class="d-flex flex-grow-1 flex-column">
+                        <h4 class="mb-0"><b>Details</b></h4>
+                        <!-- <h4 class="mb-0">English</h4> -->
+                        <!-- <h5 class="mb-0">30-Minute Trial Lesson</h5> -->
+                        <a>{{event.teacherId.fullName | titlecase}}</a>
+                      </div>
+                      <div class="view_btn">
+                        <div class="d-flex">
+                          <!-- <button class="btn btn-primary br" [routerLink]="[ '/dashboard/schedule' ]">View</button> -->
+                          <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle bl" type="button" id="dropdownMenuButton"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" *ngIf="event.status=='booked'"
+                                (click)="reschedule(event,event.id)">Reschedule</a>
+                              <a class="dropdown-item" *ngIf="event.status=='booked' || event.status=='rescheduled'"
+                                (click)="cancelSchedule(event.id)">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <mat-paginator [length]="totalRecords" [pageSize]="pageSize" (page)="getPaginatorBookings($event)">
+                  </mat-paginator>
+                  <!-- </mat-tab> -->
+                  <!-- <mat-tab label="calander">
+                      <div class="card p-2 mt-3">
+                        <mat-card class="demo-inline-calendar-card">
+                          <mat-calendar [(selected)]="selected"></mat-calendar>
+                        </mat-card>
+                      </div>
+                    </mat-tab> -->
+                  <!-- </mat-tab-group> -->
+                </mat-tab>
+                <!-- <mat-tab label="Slots" >
+                  
+
+                      <div class="container mb-3 p-0 mt-3">
+                        <div class="table-responsive">
+                          <table class="table table-striped table-hover appointment-action-table table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="title">Title</th>
+                                <th class="start-at">
+                                  Date
+                                </th>
+                                <th class="Start Time">
+                                  Start Time
+                                </th>
+                              
+
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                              <tr *ngFor="let event of slotData">
+                                <td class="text-capitalize">
+                                  {{event.title}}
+                                </td>
+                                <td>
+                                  {{event.start | date: 'yyyy-MM-dd' }}
+                                </td>
+
+                                <td>
+                                  {{event.starttime}}
+                                </td>
+
+
+                                <td><button type="submit" *ngIf="event?.appointmentId?.status == 'accepted'"
+                                    class="btn btn-primary" (click)="viewAppointments(event.appointmentId._id)">Mark as
+                                    Completed</button></td>
+
+                                <td class="actiontd">
+                                  <button title="Edit" class="btn btn-primary mr-2" *ngIf="!event.isBooked"
+                                    (click)="openDialog('slot',event)">
+                                    <i class="fa fa-edit"></i>
+                                  </button>
+                                  <button title="Delete" class="btn btn-danger mr-2" *ngIf="!event.isBooked"
+                                    (click)="remove(event.id)">
+                                    <i class="fa fa-trash"></i>
+                                  </button>
+
+                                  <button title="View" class="btn btn-primary" *ngIf="event.isBooked"
+                                    (click)="viewAppointment(event.appointmentId._id)">
+                                    <i class="fa fa-eye"></i>
+                                  </button>
+                                 
+                                </td>
+                              </tr>
+
+                             
+                            </tbody>
+                          </table>
+
+                         
+                        </div>
+                      </div>
+                    </mat-tab> -->
+                <mat-tab label="Calendar">
+                  <div class="container">
+
+                    <div class="row text-center">
+                      <div class="col-md-4 text-center text-md-left mb-3 mt-2">
+                        <div class="btn-group">
+                          <div class="btn btn-primary btn-sm px-2" mwlCalendarPreviousView [view]="view"
+                            [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                            <i class="fa fa-chevron-left"></i>
+                          </div>
+                          <div class="btn btn-outline-primary btn-sm" mwlCalendarToday [(viewDate)]="viewDate">
+                            Today
+                          </div>
+                          <div class="btn btn-primary btn-sm px-2" mwlCalendarNextView [view]="view"
+                            [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                            <i class="fa fa-chevron-right"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div [ngSwitch]="view">
+                    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+                      [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen"
+                      (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-month-view>
+                  </div>
+                  <!-- </div> -->
+                </mat-tab>
+                <!-- <mat-tab label="calander 2">
+
+
+                        <div class="container">
+                         
+                            <div class="row text-center">
+                                <div class="col-md-4 text-center text-md-left">
+                                    <div class="btn-group">
+                                        <div class="btn btn-primary btn-sm px-2" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                                            (viewDateChange)="closeOpenMonthViewDay()">
+                                            <i class="fa fa-chevron-left"></i>
+                                        </div>
+                                        <div class="btn btn-outline-primary btn-sm" mwlCalendarToday [(viewDate)]="viewDate">
+                                            Today
+                                        </div>
+                                        <div class="btn btn-primary btn-sm px-2" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                                            (viewDateChange)="closeOpenMonthViewDay()">
+                                            <i class="fa fa-chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                         
+                            <div [ngSwitch]="view">
+                                <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+                                  [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" 
+                                  (eventTimesChanged)="eventTimesChanged($event)">
+                                </mwl-calendar-month-view>
+                              </div>
+                        </div>
+                    </mat-tab> -->
+                <!-- </mat-tab-group> -->
+                <!-- </mat-tab> -->
+              </mat-tab-group>
+            </div>
+
+            <mat-tab label="Lessons">
+              <div class="mainpage">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-8 mt-4">
+                      <div class="rightpage">
+                        <div class="left">
+                          <p>Lessons</p>
+                        </div>
+                        <div class="right">
+
+                          <div class="pageform">
+                            <div class="container-fluid">
+                              <div class="row">
+
+                                <div class="d-flex w-100">
+                                  <!-- <select name="cars" id="cars" class="form-control width mr-3">
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="mercedes">Mercedes</option>
+                                            <option value="audi">Audi</option>
+                                          </select> -->
+                                  <div class="form-group has-search mb-0  ">
+                                    <span class="fa fa-search form-control-feedback"
+                                      (click)="getScheduledData()"></span>
+                                    <input type="text" class="form-control" [(ngModel)]="search"
+                                      (keyup)="getScheduledData()" placeholder="Search">
+                                  </div>
+                                  <button class="btn btn-primary ml-2" *ngIf="search" (click)="clearValue()"><i
+                                      class="fa fa-close"></i> </button>
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="cardlayout mt-4 border p-3 text-center" *ngIf="scheduledData.length ==0">
+                            <span>
+                              <img class="cal-img"
+                                src="https://cdn.verbling.com/static/svg/icons8/8110dc645330172da02b881d21d8ee28.icons8-calendar.svg"
+                                alt="">
+                              <h2>Schedule a Lesson</h2>
+                              <p class="mb-3">You have no scheduled lessons. Select a teacher to get started.</p>
+                              <button class="btn btn-primary w-auto shadow" [routerLink]="['/teachers/list']">Find a
+                                Teacher</button>
+                            </span>
+                          </div>
+                          <div class="" *ngIf="scheduledData.length>0">
+                            <div class="shadow d-flex justify-content-between p-3 w-100 mt-3 mb-3"
+                              *ngFor="let event of scheduledData">
+                              <div class="d-flex flex-grow-1">
+                                <div class="event_img mr-3">
+                                  <img class="teacher-img w-100" src="assets/img/user.png" alt="">
+                                </div>
+                                <div class="d-flex flex-grow-1 flex-column">
+                                  <h4 class="mb-0 text-primary"><b> {{event.teacherId.fullName | titlecase}}</b></h4>
+                                  <h3 class="mb-0">{{event.startTime}}</h3>
+                                  <h5 class="mb-0"> {{event.startDate}}</h5>
+                                  <p class="mb-0"> {{event.status | titlecase}}</p>
+                                </div>
+                              </div>
+                              <div class="d-flex flex-grow-1 justify-content-between">
+                                <div class="d-flex flex-grow-1 flex-column">
+                                  <h4 class="mb-0"><b>Details</b></h4>
+                                  <!-- <h4 class="mb-0">English</h4> -->
+                                  <!-- <h5 class="mb-0">30-Minute Trial Lesson</h5> -->
+                                  <a>{{event.teacherId.fullName | titlecase}}</a>
+                                </div>
+                                <div class="view_btn">
+                                  <div class="d-flex">
+                                    <button class="btn btn-primary br"
+                                      [routerLink]="[ '/dashboard/schedule' ]">View</button>
+                                    <div class="dropdown">
+                                      <button class="btn btn-primary dropdown-toggle bl" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+
+                                      </button>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <!-- <a class="dropdown-item" href="#">Reschedule</a> -->
+                                        <!-- <a class="dropdown-item" href="#">Add to Calendar</a>  -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <mat-paginator [length]="totalRecords" [pageSize]="pageSize"
+                            (page)="getPaginatorBookings($event)">
+                          </mat-paginator>
+
+
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-md-4 mb-4">
+                      <div class="rightpage mt-4">
+                        <div class="righttext">
+                          <h1>Lessons Overview</h1>
+                          <div class="formpage">
+                            <div class="row">
+                              <div class="col-md-4 text-center">
+                                <h3>{{scheduleCount.scheduled?scheduleCount.scheduled:0}}</h3>
+                                <h4>Scheduled</h4>
+                              </div>
+                              <div class="col-md-4 text-center p-0">
+                                <h3>{{scheduleCount.needs_scheduled?scheduleCount.needs_scheduled:0}}</h3>
+                                <h4>Needs Scheduling</h4>
+                              </div>
+                              <div class="col-md-4 text-center">
+                                <h3>{{scheduleCount.past?scheduleCount.past:0}}</h3>
+                                <h4>Past</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card1layout text-center border p-4 mt-4">
+                          <img class="cal2-img"
+                            src="https://cdn.verbling.com/static/svg/icons8/6034456424385c3abd2120cadd14fe28.icons8-calendar_plus.svg"
+                            alt="">
+                          <p class="mb-3">Sync your calendar with Verbling. Never<br> miss a lesson!.</p>
+                          <button class="btn btn-primary w-auto shadow">Sync
+                            calender</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Teachers">
+
+              <div class="mainpage">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="mt-4">
+                        <h3 class="heading_fav">Favorites</h3>
+                        <div class="d-flex mt-3">
+                          <div class="form-group has-search mb-0">
+                            <span class="fa fa-search form-control-feedback" (click)="getFvaouriteTeachers()"></span>
+                            <input type="text" class="form-control" [(ngModel)]="favouriteSearch"
+                              (keyup)="getFvaouriteTeachers()" placeholder="Search">
+                          </div>
+                          <button class="btn btn-primary ml-2" *ngIf="favouriteSearch"
+                            (click)="favouriteSearch='';getFvaouriteTeachers()"><i class="fa fa-close"></i> </button>
+                        </div>
+                        <div class="imgpage mt-4" *ngIf="favouriteList.length==0">
+                          <img
+                            src="https://cdn.verbling.com/static/svg/icons8/d47e16a75c3cce53e9eb00b38eaa5a04.icons8-google_classroom.svg">
+                          <h1 class="mb-0">No teachers found</h1>
+                          <p>Follow teachers to see them here.</p>
+                        </div>
+                      </div>
+                      <div class="border shadow d-flex justify-content-between p-3 w-100 mt-3 mb-3"
+                        *ngFor="let item of favouriteList">
+                        <div class="d-flex flex-grow-1">
+                          <div class="event_img mr-3">
+                            <img class="teacher-img w-100" *ngIf="!item.userDetails?.image" src="assets/img/user.png"
+                              alt="">
+                            <img class="teacher-img w-100" *ngIf="item.userDetails?.image"
+                              src="{{_host}}{{item.userDetails?.image}}" alt="">
+                          </div>
+                          <div class="d-flex flex-grow-1 flex-column">
+                            <h4 class="mb-0 fs"><b> {{item.userDetails?.fullName | titlecase}}</b></h4>
+                            <!-- <span class="star"><i class="fa fa-star"></i> 5.0</span> -->
+                            <h3 class="mb-0 location">{{item.userDetails?.country | titlecase}}</h3>
+                            <h5 class="mb-0 hrs"> Joined At: {{item.userDetails?.createdAt | date}}</h5>
+
+                          </div>
+                        </div>
+                        <div class="d-flex align-items-start view_btn">
+                          <button class="btn btn-primary" [routerLink]="[ '/teachers/view']"
+                            [queryParams]="{id: item.userDetails?._id}">Buy Lessons</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-4">
+                      <div class="mainbox mt-4">
+                        <div class="techpage1 mt-3 pl-3">
+                          <h1 class="mb-0">Teachers</h1>
+                          <p>Quick Overview</p>
+                        </div>
+                        <div class="p-3">
+                        <div class="link mb-3">
+                          <p class="mb-0">English</p>
+                          <a class="text-priamry fs">Demo Teacher</a>
+                        </div>
+                        <div class="link">
+                            <p class="mb-0">English</p>
+                            <a class="text-priamry fs">Cristine</a>
+                          </div>
+                        </div>
+                        <div class="techpage2 pt-4 pb-4" >
+                          <img
+                            src="https://cdn.verbling.com/static/svg/icons8/d47e16a75c3cce53e9eb00b38eaa5a04.icons8-google_classroom.svg">
+                          <h1 class="mb-0">No teachers found</h1>
+                          <p>Follow teachers to see them here.</p>
+                        </div>
+                      </div>
+                    </div> -->
+                </div>
+              </div>
+
+
+            </mat-tab>
+
+
+
+
+
+          </div>
+
+        </div>
+      </div>

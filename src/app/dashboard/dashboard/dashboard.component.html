@@ -1,0 +1,419 @@
+<ngx-spinner></ngx-spinner>
+
+
+<div class="bg_main tabs">
+
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Dashboard" class="profile_tab">
+      <div class="banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex align-item-center">
+                <img class="userImg"
+                  src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3Dgoldy%26background%3D943afa%26size%3D600%26color%3Dffffff"
+                  alt="">
+                <div class="detail ml-3">
+                  <h1 class="mb-2">{{user.fullName}}</h1>
+                  <p> <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1ee-1f1f3.png?v=2.2.7" class="flag"
+                      alt=""> {{user.country | titlecase}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 text-right">
+              <!-- (click)="openDialog('lessons', 'event')" -->
+              <button class="btn btn-primary mr-2" [routerLink]="['/teacher-dashboard/list']" > <i
+                  class="fa fa-plus mr-2"></i>
+                Add
+                Lessons</button>
+              <!-- <button class="btn btn-primary" (click)="openDialog('slot', 'event')"> <i class="fa fa-plus mr-2"></i> Add
+                Slot
+              </button> -->
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+      <div class="container mt-4 mb-4">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card p-0">
+              <div class="card-header">
+                Languages
+              </div>
+              <div class="card-body pb-1">
+                <h5 class="card-title">Speaks</h5>
+                <a (click)="openDialog('language','event')">Add language</a>
+                <!-- <h5 class="card-title">Learning</h5>
+                <a (click)="openDialog('language','event')">Add language</a> -->
+              </div>
+              <hr />
+              <div class="text-center justify">
+                <div class="schedule">
+                  <h2>0</h2>
+                  <b>Scheduled</b>
+                </div>
+                <div class="schedule">
+                  <h2>0</h2>
+                  <b>Past</b>
+                </div>
+                <div class="schedule">
+                  <h2>0</h2>
+                  <b>Needs Schedu</b>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-0 mt-3">
+              <div class="card-header">
+                Weekly Progress
+              </div>
+              <div class="card-body pb-1">
+                <p class="desc">Only languages marked as "learning" will show here.</p>
+              </div>
+            </div>
+
+            <div class="card p-0 mt-3">
+              <div class="card-header">
+                Lesson History
+              </div>
+              <div class="card-body pb-1">
+                <p class="desc">celendar</p>
+              </div>
+            </div>
+
+            <div class="card p-0 mt-3">
+              <div class="card-header">
+                Quick Links
+              </div>
+              <div class="card-body pb-1">
+                <a class="link">Equipment check</a>
+                <a class="link">Demo lesson</a>
+                <a class="link">Desktop notifications</a>
+                <a class="link">Sync calendar</a>
+                <a class="link">Settings</a>
+                <a class="link">Help center</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="box">
+              <!-- <mat-tab-group>
+                <mat-tab label="List" label="Lessons"> -->  
+                  <h2 class="tabrow mt-2">Lessons</h2>
+                  <mat-tab-group>
+                      <mat-tab label="list">
+                      <div class="d-flex mt-3">
+                          <mat-form-field appearance="outline">
+                              <mat-label>  Upcoming</mat-label>
+                              <mat-select disableRipple>
+                                <mat-option value="1"> Upcoming</mat-option>
+                              </mat-select>
+                            </mat-form-field> 
+                            <mat-form-field class="example-full-width ml-3" appearance="outline">
+                              <mat-label>Search</mat-label>
+                              <input type="text"
+                                     placeholder="Search"
+                                     aria-label="Number"
+                                     matInput  >
+                                     <i class="fa fa-search form-control-feedback"></i>
+                          </mat-form-field>
+                       
+
+                      </div>
+
+                      <div class="card text-center border p-4">
+                        <img class="cal-img"
+                          src="https://cdn.verbling.com/static/svg/icons8/8110dc645330172da02b881d21d8ee28.icons8-calendar.svg"
+                          alt="">
+                        <h2>Schedule a Lesson</h2>
+                        <p class="mb-3">You have no scheduled lessons. Select a teacher to get started.</p>
+                        <button class="btn btn-primary w-auto shadow" [routerLink]="['/teacher-dashboard/list']">Find a
+                          Teacher</button>
+                      </div>
+                    </mat-tab>
+                    <mat-tab label="calander">
+                      <div class="card p-2 mt-3">
+                        <mat-card class="demo-inline-calendar-card">
+                          <mat-calendar [(selected)]="selected"></mat-calendar>
+                        </mat-card>
+                      </div>
+                    </mat-tab>
+                  </mat-tab-group>
+                <!-- </mat-tab>
+                
+              </mat-tab-group> -->
+            </div>
+
+            <mat-tab label="Lessons">
+              <div class="mainpage">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-8 mt-4 mb-4">
+                      <div class="rightpage">
+                        <div class="left">
+                          <p>Lessons</p>
+                        </div>
+                        <div class="right">
+                          <mat-tab-group>
+                            <mat-tab label=" List">
+                              <div class="pageform">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <div class="col-md-6 pl-0">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>  Upcoming</mat-label>
+                                            <mat-select disableRipple>
+                                              <mat-option value="1"> Upcoming</mat-option>
+                                            </mat-select>
+                                          </mat-form-field> 
+                                    </div>
+                                    <div class="col-md-6 pr-0">
+                                          <mat-form-field class="example-full-width" appearance="outline">
+                                            <mat-label>Search</mat-label>
+                                            <input type="text"
+                                                   placeholder="Search"
+                                                   aria-label="Number"
+                                                   matInput  >
+                                                   <i class="fa fa-search form-control-feedback"></i>
+                                        </mat-form-field> 
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="cardlayout text-center border p-4 mt-4">
+                                <img class="cal-img"
+                                  src="https://cdn.verbling.com/static/svg/icons8/8110dc645330172da02b881d21d8ee28.icons8-calendar.svg"
+                                  alt="">
+                                <h2>Schedule a Lesson</h2>
+                                <p class="mb-3">You have no scheduled lessons. Select a teacher to get started.</p>
+                                <button class="btn btn-primary w-auto shadow"
+                                  [routerLink]="['/teacher-dashboard/list']">Find a
+                                  Teacher</button>
+                              </div>
+
+
+                            </mat-tab>
+                            <mat-tab label=" Calendar">
+                              <div class="cardpage mt-4">
+                                <mat-card class="demo-inline-calendar-card">
+                                  <mat-calendar [(selected)]="selected"></mat-calendar>
+                                </mat-card>
+                              </div>
+                            </mat-tab>
+                          </mat-tab-group>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                      <div class="rightpage mt-4">
+                        <div class="righttext">
+                          <h1>Lessons Overview</h1>
+                          <div class="formpage">
+                            <div class="row">
+                              <div class="col-md-4 text-center">
+                                <h3>0</h3>
+                                <h4>Scheduled</h4>
+                              </div>
+                              <div class="col-md-4 text-center">
+                                <h3>0</h3>
+                                <h4>Needs Scheduling</h4>
+                              </div>
+                              <div class="col-md-4 text-center">
+                                <h3>0</h3>
+                                <h4>Past</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card1layout text-center border p-4 mt-4">
+                          <img class="cal2-img"
+                            src="https://cdn.verbling.com/static/svg/icons8/6034456424385c3abd2120cadd14fe28.icons8-calendar_plus.svg"
+                            alt="">
+                          <p class="mb-3">Sync your calendar with Verbling. Never<br> miss a lesson!.</p>
+                          <button class="btn btn-primary w-auto shadow" [routerLink]="['/teacher-dashboard/list']">Sync
+                            calender</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Teachers">
+
+              <div class="mainpage">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="techpage mt-4">
+                        <mat-tab-group>
+                          <mat-tab label="Current"> </mat-tab>
+                          <mat-tab label="Favorites"> </mat-tab>
+                        </mat-tab-group>
+                        <div class="col-md-6 p-0">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Search</mat-label>
+                              <input type="text"
+                                     placeholder="Search"
+                                     aria-label="Number"
+                                     matInput  >
+                                     <i class="fa fa-search form-control-feedback"></i>
+                          </mat-form-field> 
+                        </div>
+                        <div class="imgpage mt-4">
+                          <img
+                            src="https://cdn.verbling.com/static/svg/icons8/d47e16a75c3cce53e9eb00b38eaa5a04.icons8-google_classroom.svg">
+                          <h1 class="mb-0">No teachers found</h1>
+                          <p>Follow teachers to see them here.</p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mainbox mt-4">
+                        <div class="techpage1 mt-3 pl-3">
+                          <h1 class="mb-0">Teachers</h1>
+                          <p>Quick Overview</p>
+                        </div>
+                        <div class="techpage2 pt-4 pb-4">
+                          <img
+                            src="https://cdn.verbling.com/static/svg/icons8/d47e16a75c3cce53e9eb00b38eaa5a04.icons8-google_classroom.svg">
+                          <h1 class="mb-0">No teachers found</h1>
+                          <p>Follow teachers to see them here.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </mat-tab>
+
+            <mat-tab label="Homework">
+              <div class="pageform">
+                <div class="container">
+                  <div class="row"> 
+                          <div class="col-md-6 pl-0">
+                              <mat-form-field appearance="outline">
+                                  <mat-label>  Upcoming</mat-label>
+                                  <mat-select disableRipple>
+                                    <mat-option value="1"> Upcoming</mat-option>
+                                  </mat-select>
+                                </mat-form-field> 
+                          </div>
+                          <div class="col-md-6 pr-0">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                  <mat-label>Search</mat-label>
+                                  <input type="text"
+                                         placeholder="Search"
+                                         aria-label="Number"
+                                         matInput  >
+                                         <i class="fa fa-search form-control-feedback"></i>
+                              </mat-form-field> 
+                          </div> 
+                  </div>
+                  <div class="centerpage">
+                    <div class="row">
+                      <h2 class="mt-3 pl-4">No homework found.</h2>
+                      <div class="col-md-12">
+                        <div class="imgpage2 mt-5">
+                          <img
+                            src="https://cdn.verbling.com/static/svg/icons8/6034456424385c3abd2120cadd14fe28.icons8-calendar_plus.svg">
+                          <h1 class="mb-0 mt-3">Sync your calendar with Verbling to keep track of your homework!</h1>
+                          <p class="mt-3">Sync calender</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </mat-tab>
+
+            <mat-tab label="Vocabulary">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="decks mt-4 mb-4">
+                      <h1>My Decks</h1>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="decks text-right mt-4 mb-4">
+                      <button mat-button (click)="openDialog('deck', 'event')">Create deck</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="mainline pl-5 pt-5 mb-5">
+                  <div class="row">
+                   
+                      <div class="col-md-6">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Search</mat-label>
+                              <input type="text"
+                                     placeholder="Search"
+                                     aria-label="Number"
+                                     matInput  >
+                                     <i class="fa fa-search form-control-feedback"></i>
+                          </mat-form-field> 
+                      </div>
+                      <div class="col-md-12">
+                      <div class="searchline">
+                       
+                        <div class="tablist mt-4">
+                          <mat-tab-group>
+                            <mat-tab label="My Decks"></mat-tab>
+                            <mat-tab label="Favorites"></mat-tab>
+                          </mat-tab-group>
+                        </div>
+                        <div class="imglist mt-3 mb-3">
+                          <img
+                            src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3DGoldy%26background%3D0699cd%26size%3D600%26color%3Dffffff">
+                        </div>
+                        <div class="imgflex d-flex">getItem
+                          <div class="imgflex1">
+                            <img
+                              src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fui-avatars.com%2Fapi%2F%3Fname%3DGoldy%26background%3D0699cd%26size%3D600%26color%3Dffffff">
+                          </div>
+                          <div class="textlist pl-2">
+                            <p class="mb-0">Text</p>
+                          </div>
+                        </div>
+                        <div class="co1">
+                          <h1 class="mb-0">My Vocabulary</h1>
+                        </div>
+                        <div class="co2 d-flex">
+                          <div class="imgitme mb-5">
+                            <img
+                              src="https://cdn.verbling.com/static/svg/icons8/a78de82e0257f8b0c1396c0c2b3f690f.icons8-sheets.svg">
+                          </div>
+                          <div class="co3 pl-2">
+                            <p>0</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+
+          </div>
+
+        </div>
+      </div>

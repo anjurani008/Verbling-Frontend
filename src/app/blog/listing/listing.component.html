@@ -1,0 +1,145 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <div class="bodyLayout text-center">
+        <h1 class="mb-5"> BLOG</h1>
+        <!-- <input type="email" class="form-control layoutIcon" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Search"> -->
+
+
+        <form class="search-form" (ngSubmit)="searchValue()">
+          <div class="rowList d-flex  mt-3 mb-3">
+            <div class="flexRow">
+              <input class="form-control layoutIcon " [(ngModel)]="filters.search" [ngModelOptions]="{standalone: true}"
+                id="name" required type="text" placeholder="Search" />
+            </div>
+            <div class="flexDiv ">
+              <button type="submit" [disabled]='!filters.search' class=" btn btn-secondary btn-sm ml-2">Search</button>
+              <button type="button" *ngIf="filters.search" (click)="clearValue()"
+                class=" btn btn-secondary btn-sm ml-2">Clear</button>
+            </div>
+          </div>
+        </form>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" (click)="getTab('')" data-toggle="tab" href="#home" role="tab"
+              aria-controls="home" aria-selected="true">All</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" (click)="getTab('Trending')" href="#profile"
+              role="tab" aria-controls="profile" aria-selected="false">TRENDING</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" (click)="getTab('New')" href="#contact" role="tab"
+              aria-controls="contact" aria-selected="false">New</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row mt-5">
+              <ng-container *ngFor="let item of blogData">
+                <div class="col-md-3 mb-3" *ngIf="item.status=='active'">
+                  <div class="cardLayout" (click)="blogdetail(item.id)">
+                    <div class="imgLayout">
+                      <img *ngIf="item.image" src="{{_host}}{{item.image}}" class="featuredimg" alt="">
+                      <img *ngIf="!item.image" class="featuredimg" src="assets/img/noimage.png" alt="">
+                    </div>
+                    <div class="card-content">
+                      <span>{{item.title}}</span>
+                      <h3 class="textStyle" [innerHTML]='item.description'></h3>
+                      <p>Read More...</p>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+              <!-- <div class="col-md-3 mb-4">
+                <div class="cardLayout">
+                  <div class="imgLayout">
+                    <img
+                      src="https://images.unsplash.com/photo-1646974005583-01e9a7b0b5f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
+                      alt="">
+                  </div>
+                  <div class="card-content">
+                    <span>Category</span>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p>Read More...</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div class="cardLayout">
+                  <div class="imgLayout">
+                    <img
+                      src="https://images.unsplash.com/photo-1646974005583-01e9a7b0b5f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
+                      alt="">
+                  </div>
+                  <div class="card-content">
+                    <span>Category</span>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p>Read More...</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div class="cardLayout">
+                  <div class="imgLayout">
+                    <img
+                      src="https://images.unsplash.com/photo-1646974005583-01e9a7b0b5f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
+                      alt="">
+                  </div>
+                  <div class="card-content">
+                    <span>Category</span>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p>Read More...</p>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="row mt-5">
+              <ng-container *ngFor="let item of blogData">
+              <div class="col-md-3 mb-3" *ngIf="item.status=='active'">
+                <div class="cardLayout" (click)="blogdetail(item.id)">
+                  <div class="imgLayout">
+                    <img *ngIf="item.image" src="{{_host}}{{item.image}}" class="featuredimg" alt="">
+                    <img *ngIf="!item.image" class="featuredimg" src="assets/img/noimage.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <span>{{item.title}}</span>
+                    <h3 class="textStyle" [innerHTML]='item.description'></h3>
+                    <p>Read More...</p>
+                  </div>
+                </div>
+              </div>
+              </ng-container>
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="row mt-5">
+              <ng-container *ngFor="let item of blogData">
+              <div class="col-md-3 mb-3" *ngIf="item.status=='active'">
+                <div class="cardLayout" (click)="blogdetail(item.id)">
+                  <div class="imgLayout">
+                    <img *ngIf="item.image" src="{{_host}}{{item.image}}" class="featuredimg" alt="">
+                    <img *ngIf="!item.image" class="featuredimg" src="assets/img/noimage.png" alt="">
+                  </div>
+                  <div class="card-content">
+                    <span>{{item.title}}</span>
+                    <h3 class="textStyle" [innerHTML]='item.description'></h3>
+                    <p>Read More...</p>
+                  </div>
+                </div>
+              </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

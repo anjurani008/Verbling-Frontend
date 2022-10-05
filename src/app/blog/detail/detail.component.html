@@ -1,0 +1,68 @@
+<main class="container">
+    <header class="header">
+      <!-- <p class="subheading">Subheading for the Page</p> -->
+      <h1 class="section-header d-flex justify-content-end">
+    
+        <button class="btn btn-secondary" routerLink="/../blog/listing">
+            <i class="fa fa-backward" aria-hidden="true" title="Back to list"></i>
+        </button>
+     
+     </h1>
+    </header>
+  
+    <section class="content">
+      <h1 class="headLine">{{blog?.title}}</h1>
+      <img *ngIf="blog.image" src="{{_host}}{{blog?.image}}" alt='large-image' class="poster-image">
+      <img *ngIf="!blog.image"  src="assets/img/noimage.png" alt='large-image' class="poster-image">
+      
+      <p class="topList mt-3" [innerHTML]='blog?.description'></p>
+      
+    </section>
+    <aside class="aside">
+      <div class="newForm">
+      <h4 class="heading text-center">TRENDING</h4>
+      <div *ngFor="let item of Trendingblogs;let i=index">
+      <div class="card" *ngIf="i<2" (click)="blogdetail(item.id)">
+        <img *ngIf="item.image" src="{{_host}}{{item.image}}" class="featuredimg" alt="">
+        <img *ngIf="!item.image" class="featuredimg" src="assets/img/noimage.png" alt="">
+        <!-- <img src='https://images.unsplash.com/photo-1457269315919-3cfc794943cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=2c42c1cac3092204f4c1afdca4d44e99' alt=''> -->
+        <div class="w-100 mt-2">
+          <p class="heading title">{{item.title}}</p>
+          <p class="author" [innerHTML]="item.description"></p>
+        </div>
+      </div>
+    </div>
+      <!-- <div class="card">
+        <img src='assets/img/bbgimg.jpg' alt=''>
+        <div>
+          <p class="heading title">The bug subtext</p>
+          <p class="author">Harsha</p>
+        </div>
+      </div>-->
+      </div>
+      <div class="newForm mt-5">
+      <h4 class="heading text-center">NEW</h4>
+      <div *ngFor="let item of Newblog;let i=index">
+      <div class="card"  *ngIf="i<2" (click)="blogdetail(item.id)">
+        <!-- <img src='https://images.unsplash.com/photo-1457269315919-3cfc794943cd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=2c42c1cac3092204f4c1afdca4d44e99' alt=''> -->
+        <img *ngIf="item.image" src="{{_host}}{{item.image}}" class="featuredimg" alt="">
+        <img *ngIf="!item.image" class="featuredimg"  src="assets/img/noimage.png" alt="">
+        <div class="w-100 mt-2">
+          <p class="heading title">{{item.title}}</p>
+          <p class="author" [innerHTML]="item.description"></p>
+        </div>
+      </div>
+      </div>
+      <!-- <div class="card">
+        <img src='assets/img/bbgimg.jpg' alt=''>
+        <div>
+          <p class="heading title">The bug subtext</p>
+          <p class="author">Harsha</p>
+        </div>
+      </div> -->
+      </div>
+    </aside>
+    <footer class="footer">
+      <a href="https://twitter.com/agneymenon" target="_blank" class="name-link">Boy with Silver Wings</a>
+    </footer>
+  </main>

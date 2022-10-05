@@ -1,0 +1,913 @@
+<ngx-spinner></ngx-spinner>
+<div class="bg_main pt-0 pb-4">
+    <div class="link-btn bg-white p-3 mb-3">
+        <ul>
+            <li>
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownsubject" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <!-- <img src="assets/img/country.webp" alt="country" class="coun"> -->
+                        Subjects
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="inputpage">
+                            <!-- <i class="fa fa-search"></i> -->
+                            <!-- <button ngbDropdownItem>
+
+                                <input placeholder="Search by name or keyword" [(ngModel)]="filters.search"
+                                    (keyup)="getAllMembers()" type="text"
+                                    class="form-control--focuser form-control"></button> -->
+                            <div class="country p-2">
+
+                                <!-- <mat-checkbox class="check-margin" value="{{item}}" (change)="changeCountryFilter($event)">{{item | titlecase}}</mat-checkbox> -->
+                                <div class="mb-3" *ngFor="let item of subjectData">
+                                    <mat-checkbox class="check-margin" value="{{item.item_text}}"
+                                        (change)="changeSubjectFilter($event)">{{item.item_text | titlecase}}
+
+                                    </mat-checkbox>
+                                </div>
+                                <!-- <div class="mb-3">
+                                    <div *ngFor="let item of subjectData">
+                                        <mat-checkbox class="check-margin">
+
+                                            <b>{{item.item_text}}</b>
+                                        </mat-checkbox>
+                                    </div>
+
+                                   
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <!-- <li><a href="#"><img src="assets/img/country.webp" alt="country" class="coun"> <p>Country</p></a></li> -->
+            <li>
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownDemoavail" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-calendar-o mr-2"></i>Availability
+                    </button>
+                    <div class="dropdown-menu custom">
+                        <div class="inputpage">
+                            <h4 class="time">Time of Day</h4>
+                            <div class="row my-3 timesRow">
+                                <div class="col-md-3 text-center" [ngClass]="{'active':filter==0}" (click)="filter=0; getAvailability()">
+                                    <span class="core-icon__Icon-dbu3hq-0 cRgsCC sc-iTVJFM oxVOu">
+                                        <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M18.6541 13.7264C18.6624 13.5965 18.6667 13.4655 18.6667 13.3335C18.6667 10.0198 15.9804 7.33354 12.6667 7.33354C9.353 7.33354 6.66671 10.0198 6.66671 13.3335C6.66671 15.7618 8.10922 17.8532 10.1841 18.7974C10.0645 19.1771 10.0001 19.5811 10.0001 20.0002C10.0001 20.0335 10.0005 20.0667 10.0013 20.0998C9.67558 19.9873 9.20278 19.9914 8.52638 19.9973C8.43529 19.9981 8.34045 19.9989 8.24183 19.9994C6.08688 18.5661 4.66671 16.1157 4.66671 13.3335C4.66671 8.91526 8.24843 5.33354 12.6667 5.33354C17.085 5.33354 20.6667 8.91526 20.6667 13.3335C19.9546 13.3335 19.2751 13.4731 18.6541 13.7264Z"
+                                                fill="#606568"></path>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M15.3719 15.1909C16.5032 13.4709 18.4514 12.3335 20.6668 12.3335C24.1646 12.3335 27.0001 15.169 27.0001 18.6668C27.0001 18.7761 26.9973 18.8848 26.9918 18.9929C28.5671 19.78 29.6668 21.2666 29.6668 23.3335C29.6668 24.7953 29.2642 26.1989 28.4131 27.2592C27.543 28.3433 26.2546 29.0001 24.6668 29.0001H7.66679V28.9892C5.06078 28.8176 3.00012 26.6495 3.00012 24.0001C3.00012 21.2387 5.2387 19.0001 8.00012 19.0001C8.183 19.0001 8.35403 18.9986 8.51774 18.9972L8.53918 18.997C8.73176 18.9954 8.92125 18.9937 9.10105 18.9957C9.56604 16.7156 11.5827 15.0001 14.0001 15.0001C14.475 15.0001 14.9354 15.0666 15.3719 15.1909ZM24.6668 27.0001C25.6563 27.0001 26.3679 26.6122 26.8534 26.0073C27.3581 25.3786 27.6668 24.449 27.6668 23.3335C27.6668 21.9291 26.8729 21.0002 25.5982 20.5762L24.7747 20.3023L24.93 19.4484C24.976 19.1956 25.0001 18.9344 25.0001 18.6668C25.0001 16.2736 23.06 14.3335 20.6668 14.3335C18.9218 14.3335 17.4156 15.365 16.7286 16.8558L16.2924 17.8024L15.3647 17.3275C14.9564 17.1185 14.4936 17.0001 14.0001 17.0001C12.3433 17.0001 11.0001 18.3433 11.0001 20.0001C11.0001 20.0253 11.0004 20.0503 11.001 20.0753L11.0002 21L9.67501 21.045C9.64512 21.0346 9.55623 21.0135 9.34491 21.0028C9.13733 20.9923 8.88296 20.9941 8.53506 20.9971L8.53333 20.9972C8.53103 20.9972 8.52873 20.9972 8.52642 20.9972C8.36585 20.9986 8.18949 21.0001 8.00012 21.0001C6.34327 21.0001 5.00012 22.3433 5.00012 24.0001C5.00012 25.657 6.34327 27.0001 8.00012 27.0001L24.6668 27.0001Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M11.3334 2.3335C11.3334 1.78121 11.7811 1.3335 12.3334 1.3335C12.8857 1.3335 13.3334 1.78121 13.3334 2.3335V3.00016C13.3334 3.55245 12.8857 4.00016 12.3334 4.00016C11.7811 4.00016 11.3334 3.55245 11.3334 3.00016V2.3335Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M1.66675 14.6668C1.11446 14.6668 0.666748 14.2191 0.666748 13.6668C0.666748 13.1145 1.11446 12.6668 1.66675 12.6668H2.33341C2.8857 12.6668 3.33341 13.1145 3.33341 13.6668C3.33341 14.2191 2.8857 14.6668 2.33341 14.6668H1.66675Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M4.04052 6.12133C3.65 5.73081 3.65 5.09764 4.04052 4.70712C4.43105 4.31659 5.06421 4.31659 5.45474 4.70712L5.92614 5.17852C6.31666 5.56905 6.31666 6.20221 5.92614 6.59274C5.53562 6.98326 4.90245 6.98326 4.51193 6.59274L4.04052 6.12133Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M20.512 4.70727C20.9026 4.31675 21.5357 4.31675 21.9263 4.70727C22.3168 5.09779 22.3168 5.73096 21.9263 6.12148L21.4549 6.59289C21.0643 6.98341 20.4312 6.98341 20.0406 6.59289C19.6501 6.20236 19.6501 5.5692 20.0406 5.17867L20.512 4.70727Z"
+                                                fill="#606568"></path>
+                                        </svg></span>
+                                    <div class="sc-bdnxRM sc-gtsrHT flex-wypzvx-0 jaZnIH gfuSqG kSIXVk">
+                                        <div font-size="sm"
+                                            class="sc-bdnxRM dmYbxP text-sc-1b7rn1-0 sc-cBoqAE jVmeNp hAslba">Early
+                                            Morning</div>
+                                        <div color="gray" font-size="sm"
+                                            class="sc-bdnxRM kYyUOu text-sc-1b7rn1-0 jVmeNp">4am - 8am</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center" [ngClass]="{'active':filter==1}" (click)="filter=1; getAvailability()">
+                                    <span class="core-icon__Icon-dbu3hq-0 cRgsCC sc-iBzEeX glZmJR">
+                                        <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M15 8C15 7.44772 15.4477 7 16 7C16.5523 7 17 7.44772 17 8V10C17 10.5523 16.5523 11 16 11C15.4477 11 15 10.5523 15 10V8Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M28 19C28.5523 19 29 19.4477 29 20C29 20.5523 28.5523 21 28 21H26C25.4477 21 25 20.5523 25 20C25 19.4477 25.4477 19 26 19H28Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M6 19C6.55228 19 7 19.4477 7 20C7 20.5523 6.55228 21 6 21H4C3.44772 21 3 20.5523 3 20C3 19.4477 3.44772 19 4 19H6Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M6.70711 12.1213C6.31658 11.7308 6.31658 11.0976 6.70711 10.7071C7.09763 10.3166 7.7308 10.3166 8.12132 10.7071L9.53553 12.1213C9.92606 12.5118 9.92606 13.145 9.53553 13.5355C9.14501 13.926 8.51184 13.926 8.12132 13.5355L6.70711 12.1213Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M24.1213 10.7071C24.5118 10.3166 25.145 10.3166 25.5355 10.7071C25.926 11.0976 25.926 11.7308 25.5355 12.1213L24.1213 13.5355C23.7307 13.9261 23.0976 13.9261 22.707 13.5355C22.3165 13.145 22.3165 12.5118 22.707 12.1213L24.1213 10.7071Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M4 24C4 23.4477 4.44772 23 5 23H27C27.5523 23 28 23.4477 28 24C28 24.5523 27.5523 25 27 25H5C4.44772 25 4 24.5523 4 24Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M21.1973 23C21.7078 22.1175 22 21.0929 22 20C22 16.6863 19.3137 14 16 14C12.6863 14 10 16.6863 10 20C10 21.0929 10.2922 22.1175 10.8027 23H8.58152C8.20651 22.0736 8 21.0609 8 20C8 15.5817 11.5817 12 16 12C20.4183 12 24 15.5817 24 20C24 21.0609 23.7935 22.0736 23.4185 23H21.1973Z"
+                                                fill="#606568"></path>
+                                        </svg></span>
+                                    <div class="sc-bdnxRM sc-gtsrHT flex-wypzvx-0 jaZnIH gfuSqG kSIXVk">
+                                        <div font-size="sm"
+                                            class="sc-bdnxRM dmYbxP text-sc-1b7rn1-0 sc-cBoqAE jVmeNp hAslba">Morning
+                                        </div>
+                                        <div color="gray" font-size="sm"
+                                            class="sc-bdnxRM kYyUOu text-sc-1b7rn1-0 jVmeNp">8am - 12pm</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center" [ngClass]="{'active':filter==2}" (click)="filter=2; getAvailability()">
+                                    <span class="core-icon__Icon-dbu3hq-0 cRgsCC sc-efHYUO cFSLxQ">
+                                        <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M16 22C19.3137 22 22 19.3137 22 16C22 12.6863 19.3137 10 16 10C12.6863 10 10 12.6863 10 16C10 19.3137 12.6863 22 16 22ZM16 24C20.4183 24 24 20.4183 24 16C24 11.5817 20.4183 8 16 8C11.5817 8 8 11.5817 8 16C8 20.4183 11.5817 24 16 24Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M15 4C15 3.44772 15.4477 3 16 3C16.5523 3 17 3.44772 17 4V6C17 6.55228 16.5523 7 16 7C15.4477 7 15 6.55228 15 6V4Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M15 26C15 25.4477 15.4477 25 16 25C16.5523 25 17 25.4477 17 26V28C17 28.5523 16.5523 29 16 29C15.4477 29 15 28.5523 15 28V26Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M28 15C28.5523 15 29 15.4477 29 16C29 16.5523 28.5523 17 28 17H26C25.4477 17 25 16.5523 25 16C25 15.4477 25.4477 15 26 15H28Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M6 15C6.55228 15 7 15.4477 7 16C7 16.5523 6.55228 17 6 17H4C3.44772 17 3 16.5523 3 16C3 15.4477 3.44772 15 4 15H6Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M6.58574 7.99995C6.19522 7.60943 6.19522 6.97626 6.58574 6.58574C6.97626 6.19522 7.60943 6.19522 7.99995 6.58574L9.41417 7.99995C9.80469 8.39048 9.80469 9.02364 9.41417 9.41417C9.02364 9.80469 8.39048 9.80469 7.99995 9.41417L6.58574 7.99995Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M7.99995 25.5355C7.60943 25.926 6.97626 25.926 6.58574 25.5355C6.19522 25.145 6.19522 24.5118 6.58574 24.1213L7.99995 22.7071C8.39048 22.3166 9.02364 22.3166 9.41417 22.7071C9.80469 23.0976 9.80469 23.7308 9.41417 24.1213L7.99995 25.5355Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M25.1213 24.1213C25.5118 24.5118 25.5118 25.145 25.1213 25.5355C24.7308 25.926 24.0976 25.926 23.7071 25.5355L22.2929 24.1213C21.9024 23.7307 21.9024 23.0976 22.2929 22.707C22.6834 22.3165 23.3166 22.3165 23.7071 22.707L25.1213 24.1213Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M24.1213 6.58577C24.5118 6.19524 25.145 6.19524 25.5355 6.58577C25.926 6.97629 25.926 7.60946 25.5355 7.99998L24.1213 9.4142C23.7307 9.80472 23.0976 9.80472 22.707 9.4142C22.3165 9.02367 22.3165 8.39051 22.707 7.99998L24.1213 6.58577Z"
+                                                fill="#606568"></path>
+                                        </svg></span>
+                                    <div class="sc-bdnxRM sc-gtsrHT flex-wypzvx-0 jaZnIH gfuSqG kSIXVk">
+                                        <div font-size="sm"
+                                            class="sc-bdnxRM dmYbxP text-sc-1b7rn1-0 sc-cBoqAE jVmeNp hAslba">Afternoon
+                                        </div>
+                                        <div color="gray" font-size="sm"
+                                            class="sc-bdnxRM kYyUOu text-sc-1b7rn1-0 jVmeNp">12pm - 4pm</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center" [ngClass]="{'active':filter==3}" (click)="filter=3 ;getAvailability()">
+                                    <span class="core-icon__Icon-dbu3hq-0 cRgsCC sc-cTJkRt lmGFyU">
+                                        <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M10.1042 21.6127C11.5306 22.9263 13.433 23.7258 15.5216 23.7258C19.9399 23.7258 23.5216 20.144 23.5216 15.7258C23.5216 12.6891 21.8285 10.0446 19.3333 8.6898C19.4571 9.35046 19.5217 10.0311 19.5217 10.7257C19.5217 16.2635 15.4296 20.8455 10.1042 21.6127ZM17.5217 10.7257C17.5217 15.6963 13.4922 19.7257 8.52168 19.7257C8.41003 19.7257 8.29886 19.7237 8.18819 19.7197C7.36792 19.6898 6.69483 20.5007 7.14376 21.1879C8.92879 23.9202 12.0143 25.7258 15.5216 25.7258C21.0445 25.7258 25.5216 21.2486 25.5216 15.7258C25.5216 11.0486 22.3107 7.12149 17.9729 6.02841C17.1769 5.82781 16.6297 6.72889 16.9245 7.49509C17.3102 8.49783 17.5217 9.58708 17.5217 10.7257Z"
+                                                fill="#606568"></path>
+                                        </svg></span>
+                                    <div class="sc-bdnxRM sc-gtsrHT flex-wypzvx-0 jaZnIH gfuSqG kSIXVk">
+                                        <div font-size="sm"
+                                            class="sc-bdnxRM dmYbxP text-sc-1b7rn1-0 sc-cBoqAE jVmeNp hAslba">Evening
+                                        </div>
+                                        <div color="gray" font-size="sm"
+                                            class="sc-bdnxRM kYyUOu text-sc-1b7rn1-0 jVmeNp">4pm - 8pm</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mt-3 text-center" [ngClass]="{'active':filter==4}" (click)="filter=4; getAvailability()">
+                                    <span class="core-icon__Icon-dbu3hq-0 cRgsCC sc-cTJkRt lmGFyU">
+                                        <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M10.1042 21.6127C11.5306 22.9263 13.433 23.7258 15.5216 23.7258C19.9399 23.7258 23.5216 20.144 23.5216 15.7258C23.5216 12.6891 21.8285 10.0446 19.3333 8.6898C19.4571 9.35046 19.5217 10.0311 19.5217 10.7257C19.5217 16.2635 15.4296 20.8455 10.1042 21.6127ZM17.5217 10.7257C17.5217 15.6963 13.4922 19.7257 8.52168 19.7257C8.41003 19.7257 8.29886 19.7237 8.18819 19.7197C7.36792 19.6898 6.69483 20.5007 7.14376 21.1879C8.92879 23.9202 12.0143 25.7258 15.5216 25.7258C21.0445 25.7258 25.5216 21.2486 25.5216 15.7258C25.5216 11.0486 22.3107 7.12149 17.9729 6.02841C17.1769 5.82781 16.6297 6.72889 16.9245 7.49509C17.3102 8.49783 17.5217 9.58708 17.5217 10.7257Z"
+                                                fill="#606568"></path>
+                                        </svg></span>
+                                    <div class="sc-bdnxRM sc-gtsrHT flex-wypzvx-0 jaZnIH gfuSqG kSIXVk">
+                                        <div font-size="sm"
+                                            class="sc-bdnxRM dmYbxP text-sc-1b7rn1-0 sc-cBoqAE jVmeNp hAslba">Night
+                                        </div>
+                                        <div color="gray" font-size="sm"
+                                            class="sc-bdnxRM kYyUOu text-sc-1b7rn1-0 jVmeNp">8pm - 12am</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mt-3 text-center" [ngClass]="{'active':filter==5}" (click)="filter=5; getAvailability()">
+                                    <span class="core-icon__Icon-dbu3hq-0 cRgsCC sc-cTJkRt lmGFyU">
+                                        <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M15 8C15 7.44772 15.4477 7 16 7C16.5523 7 17 7.44772 17 8V10C17 10.5523 16.5523 11 16 11C15.4477 11 15 10.5523 15 10V8Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M28 19C28.5523 19 29 19.4477 29 20C29 20.5523 28.5523 21 28 21H26C25.4477 21 25 20.5523 25 20C25 19.4477 25.4477 19 26 19H28Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M6 19C6.55228 19 7 19.4477 7 20C7 20.5523 6.55228 21 6 21H4C3.44772 21 3 20.5523 3 20C3 19.4477 3.44772 19 4 19H6Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M6.70711 12.1213C6.31658 11.7308 6.31658 11.0976 6.70711 10.7071C7.09763 10.3166 7.7308 10.3166 8.12132 10.7071L9.53553 12.1213C9.92606 12.5118 9.92606 13.145 9.53553 13.5355C9.14501 13.926 8.51184 13.926 8.12132 13.5355L6.70711 12.1213Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M24.1213 10.7071C24.5118 10.3166 25.145 10.3166 25.5355 10.7071C25.926 11.0976 25.926 11.7308 25.5355 12.1213L24.1213 13.5355C23.7307 13.9261 23.0976 13.9261 22.707 13.5355C22.3165 13.145 22.3165 12.5118 22.707 12.1213L24.1213 10.7071Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M4 24C4 23.4477 4.44772 23 5 23H27C27.5523 23 28 23.4477 28 24C28 24.5523 27.5523 25 27 25H5C4.44772 25 4 24.5523 4 24Z"
+                                                fill="#606568"></path>
+                                            <path
+                                                d="M21.1973 23C21.7078 22.1175 22 21.0929 22 20C22 16.6863 19.3137 14 16 14C12.6863 14 10 16.6863 10 20C10 21.0929 10.2922 22.1175 10.8027 23H8.58152C8.20651 22.0736 8 21.0609 8 20C8 15.5817 11.5817 12 16 12C20.4183 12 24 15.5817 24 20C24 21.0609 23.7935 22.0736 23.4185 23H21.1973Z"
+                                                fill="#606568"></path>
+                                        </svg></span>
+                                    <div class="sc-bdnxRM sc-gtsrHT flex-wypzvx-0 jaZnIH gfuSqG kSIXVk">
+                                        <div font-size="sm"
+                                            class="sc-bdnxRM dmYbxP text-sc-1b7rn1-0 sc-cBoqAE jVmeNp hAslba">Early Morning
+                                        </div>
+                                        <div color="gray" font-size="sm"
+                                            class="sc-bdnxRM kYyUOu text-sc-1b7rn1-0 jVmeNp">12am - 4am</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="time">Availability</h4>
+                        <div class="text-center">
+                            <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2"
+                                [dayTemplate]="t" outsideDays="hidden">
+                            </ngb-datepicker>
+
+                            <ng-template #t let-date let-focused="focused">
+                                <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                                    [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                                    (mouseleave)="hoveredDate = null">
+                                    {{ date.day }}
+                                </span>
+                            </ng-template>
+
+                            <div class="text-right mt-2">
+                                <button class="btn btn-primary text-white"
+                                (click)="getAvailability(true)">Search</button>
+                            </div>
+                          
+                            
+                            
+                        </div>
+<!-- 
+                            <hr>
+
+                            <pre>From: {{ fromDate | json }} </pre>
+                            <pre>To: {{ toDate | json }} </pre> -->
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!-- <li><a href="#"><i class="fa fa-globe"></i><p>Globe</p></a></li> -->
+            <!-- <li>
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownDemo" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-globe mr-2"></i>Globe
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="inputpage">
+                            <i class="fa fa-search"></i>
+                            <button ngbDropdownItem>
+
+                                <input placeholder="Search by name or keyword" [(ngModel)]="filters.search"
+                                    (keyup)="getAllMembers()" type="text"
+                                    class="form-control--focuser form-control"></button>
+                            <div class="country p-2">
+                                <div class="mb-3" *ngFor="let item of countryData">
+                                    <mat-checkbox class="check-margin" value="{{item}}" (change)="changeCountryFilter($event)">{{item | titlecase}}
+                                        
+                                    </mat-checkbox>
+                                </div>
+                                <div class="mb-3">
+                                    <mat-checkbox class="check-margin">
+                                        <img src="assets/img/country.webp" alt="country"
+                                            class="coun-list"><b>Country</b>
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li> -->
+            <li>
+
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownspeaks" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-globe mr-2"></i>Teacher speaks
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="inputpage">
+                            <!-- <i class="fa fa-search"></i> -->
+                            <!-- <button ngbDropdownItem>
+
+                                <input placeholder="Search by name or keyword" [(ngModel)]="filters.search"
+                                    (keyup)="getAllMembers()" type="text"
+                                    class="form-control--focuser form-control"></button> -->
+                            <div class="country p-2">
+                                <!-- <h5 class="ml-2 mb-3">Popular</h5> -->
+                                <mat-checkbox class="check-margin" value="Russian"
+                                    (change)="changeSpeaksFilter($event)">Russian</mat-checkbox>
+                                <mat-checkbox class="check-margin" value="English"
+                                    (change)="changeSpeaksFilter($event)">English</mat-checkbox>
+                                <mat-checkbox class="check-margin" value="Ukrainian"
+                                    (change)="changeSpeaksFilter($event)">Ukrainian</mat-checkbox>
+                                <!-- <div class="mb-2" *ngFor="let item of speaksData">
+                                    <mat-checkbox class="check-margin" value="{{item}}" (change)="changeSpeaksFilter($event)">{{item | titlecase}}</mat-checkbox>
+
+                                </div> -->
+                                <!-- <div class="mb-2">
+                                    <mat-checkbox class="check-margin">
+                                        French
+                                    </mat-checkbox>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownDemo" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-globe mr-2"></i>Age
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="inputpage">
+           
+                            <div class="country p-2">
+            
+                                <mat-checkbox class="check-margin" value="0-3"
+                                    (change)="changeAgeFilter($event)">0-3 yrs</mat-checkbox>
+                                <mat-checkbox class="check-margin" value="3-5"
+                                    (change)="changeAgeFilter($event)">3-5 yrs</mat-checkbox>
+                                <mat-checkbox class="check-margin" value="6-12"
+                                    (change)="changeAgeFilter($event)">6-12 yrs</mat-checkbox>
+                                    <mat-checkbox class="check-margin" value="12-15"
+                                    (change)="changeAgeFilter($event)">12-15 yrs</mat-checkbox>
+                                    <mat-checkbox class="check-margin" value="15-18"
+                                    (change)="changeAgeFilter($event)">15-18 yrs</mat-checkbox>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <!-- <li>
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownDemo" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-tag mr-2"></i>Price
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="inputpage">
+                            <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1000" min="0"
+                                max="100000" aria-label="units"></mat-slider>
+
+                        </div>
+
+                    </div>
+                </div>
+            </li> -->
+            <li>
+
+            </li>
+            <!-- <li class="filter_list">
+                        <mat-form-field appearance="fill">
+                                <mat-label>Filter</mat-label>
+                                <mat-select multiple [formControl]="toppings">
+                                  
+                                  <mat-option [value]="topping" class="d-none">
+
+                                  </mat-option>
+                                  <div class="inputpage" >
+                                        <i class="fa fa-search"></i>
+                                      <button ngbDropdownItem><input placeholder="Search by name or keyword" [(ngModel)]="filters.search" (keyup)="getAllMembers()"  type="text" class="form-control--focuser form-control" ></button>
+                                      <button ngbDropdownItem><div class="chackpage">
+                                        <h1>Gender</h1>  
+                                        <p><mat-checkbox class="check-margin">Online Now</mat-checkbox></p>
+                                        <mat-checkbox class="check-margin">Online Now</mat-checkbox></div></button>
+                                      <button ngbDropdownItem>Something else is here</button>
+                                      </div>
+                                </mat-select>
+                              </mat-form-field>
+                 </li> -->
+            <!-- <li>
+                <div class="dropdown keep-inside-clicks-open">
+                    <button class="btn dropdown-toggle" type="button" id="btnDropdownDemo" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bars"></i>Filter
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="inputpage">
+                            <i class="fa fa-search" (click)="getAllMembers()"></i>
+                            <button ngbDropdownItem><input placeholder="Search by name or keyword"
+                                    [(ngModel)]="filters.search" type="text"
+                                    class="form-control--focuser form-control"></button>
+                            <div class="chackpage p-2 pt-1">
+                                <h1 class="ml-2">Gender</h1>
+                      
+                                <p>
+                                    <mat-checkbox class="check-margin" value="male" (change)="changeFilter($event)">Male</mat-checkbox>
+                                </p>
+                                <mat-checkbox class="check-margin" (change)="changeFilter($event)" value="female">Female</mat-checkbox>
+                            </div>
+                            <div class="chackpage p-2 pt-1">
+                                <h1 class="ml-2">Subjects</h1>
+                      
+                                <p *ngFor="let item of subjectData">
+                                    <mat-checkbox class="check-margin" value="{{item}}" (change)="changeSubjectFilter($event)">{{item | titlecase}}</mat-checkbox>
+                                </p>
+                            </div>
+                            <div class="chackpage p-2 pt-1">
+                                <h1 class="ml-2">Test Preparation</h1>
+                      
+                                <p *ngFor="let item of testPreparationData">
+                                    <mat-checkbox class="check-margin" value="{{item}}" (change)="changePreparationFilter($event)">{{item}}</mat-checkbox>
+                                </p>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+               
+
+            </li> -->
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 res_col">
+                <h1 class="title">Teachers Listing</h1>
+
+                <div class="card mb-4" *ngFor="let item of membersData;let i=index;"
+                    (mouseover)="onWindowScroll($event,item)">
+                    <div class="d-flex">
+                        <div class="left_side d-flex">
+                            <div class="card-pic  mr-4" [routerLink]="[ '/teachers/view']"
+                                [queryParams]="{id: item._id}">
+                                <img *ngIf="item.image" src="{{_host}}{{item.image}}" class="featuredimg" alt="">
+                                <img *ngIf="!item.image" class="featuredimg" src="assets/img/user.png" alt="">
+                                <!-- <p>FEATURED</p> -->
+                            </div>
+                            <!-- <div class="ang">
+                                <p class="currency_convertor text-danger"><del>ANG 78.45</del></p>
+                                <p class="currency_convertor text-success">ANG 70.60</p>
+                                <p class="currency_convertor text-black">ANG/h</p>
+                            </div> -->
+                            <div
+                                class="name d-flex justify-content-between align-items-center mb-2 flex-wrap flex-grow-1 mobile">
+                                <div class="card_name d-flex align-items-center w-100 justify-content-between"
+                                    [routerLink]="[ '/teachers/view']" [queryParams]="{id: item._id}">
+                                    <h2 class="mb-0">{{item.fullName | titlecase}}</h2>
+                                    <a *ngIf="filters.userId && user.role!='teacher'" (click)="addFavourite(item._id)"
+                                        class="favorite" class="mr-2"><i class="fa" [ngClass]="{
+                                        'fa-heart-o': !item.isFavourite,
+                                        'fa-heart fa-2x text-danger': item.isFavourite
+                                      }"></i></a>
+                                </div>
+
+                                <div class="favourite  d-flex" *ngIf="user && user.role!='teacher'">
+                                    <a style="font-size: 12px;" class="mr-2" mat-raised-button color="accent"
+                                        *ngIf="user?.role!=='teacher'" (click)="checkSubscription(item._id,'free')">Free
+                                        Consultation</a>
+                                    <a style="font-size: 12px;" class="" mat-raised-button color="accent"
+                                        *ngIf="user?.role!=='teacher'" (click)="checkSubscription(item._id,'paid')">Paid
+                                        Lessons</a>
+                                        
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="right_side flex-grow-1">
+                            <div class="name d-flex justify-content-between mb-2 flex-wrap desktop">
+                                <div class="card_name d-flex align-items-center" [routerLink]="[ '/teachers/view']"
+                                    [queryParams]="{id: item._id}">
+                                    <h2 class="mb-0">{{item.fullName | titlecase}}</h2>
+                                    <!-- <ul>
+                                        <li><a href="#"><img
+                                                    src="https://cdn.verbling.com/static/svg/icons8/f8bb7f40f6d8e98682afb32c7bbdf5d4.icons8-security_checked.svg"
+                                                    alt=""></a></li>
+                                        <li><a href="#"><img
+                                                    src="https://cdn.verbling.com/static/svg/icons8/1368f2579e7d625280c6503321bdd32e.icons8-police_badge.svg"
+                                                    alt=""></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i><strong>5.0</strong></a></li>
+                                    </ul> -->
+                                </div>
+                                <!-- *ngIf="user && user.role!='teacher'" -->
+                                <div class="favourite d-flex align-items-center">
+                                    <a *ngIf="filters.userId && user.role!='teacher'" (click)="addFavourite(item._id)"
+                                        class="favorite" class="mr-2"><i class="fa" [ngClass]="{
+                                        'fa-heart-o': !item.isFavourite,
+                                        'fa-heart fa-2x text-danger': item.isFavourite
+                                      }"></i></a>
+                                    <a style="font-size: 12px;" class="mr-2" mat-raised-button color="accent"
+                                        (click)="checkSubscription(item,'Free consultation')">Free consultation</a>
+                                    <a style="font-size: 12px;" mat-raised-button color="accent"
+                                        (click)="checkSubscription(item,'Lessons')">Paid Lessons</a>
+                                        <a style="font-size: 12px;" mat-raised-button color="accent"
+                                        *ngIf="user?.role!=='teacher' && item.isindividual " (click)="checkSubscription(item,'Individual')">Individual
+                                        Lessons</a>
+                                </div>
+
+                            </div>
+
+                            <div class="three_boxes row mb-2 mt-4 ">
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <!-- <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1e9-1f1ea.png?v=2.2.7"
+                                            alt=""> -->
+                                        <div>
+
+                                            <h2 class="mb-0">Subject</h2>
+                                            <div class="d-flex flex-grow-1">
+                                                <div class="event_img mr-3">
+
+                                                    <ul>
+                                                        <!-- <img  class="subject-img w-100" src="{{_host}}{{item.image}}" alt=""> -->
+                                                        <li *ngFor="let ite of item.subjects">
+
+                                                            
+                                                            <!-- <img  class="subject-img " src="{{_host}}{{ite.image}}" alt="">  -->
+                                                            <img *ngIf="ite.image"  src="{{_host}}{{ite?.image}}" alt="subject"
+                                                                class="coun-list">
+                                                            <img *ngIf="!ite.image"  class="coun-list" src="assets/img/user.png" alt="subject">
+                                                            {{ite?.name }}
+
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="teaches d-flex align-items-center flex-wrap">
+                                        <!-- <img src="https://cdn.verbling.com/static/svg/icons8/2ff29f72b10f9eddac8658589cedd72d.icons8-globe.svg"
+                                            alt=""> -->
+                                        <div>
+                                            <h2 class="mb-0">Price</h2>
+                                            <p class="mb-0">{{item.price | currency}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="teaches d-flex align-items-center flex-wrap">
+
+                                        <div>
+                                            <h2 class="mb-0">Lesson Duration</h2>
+                                            <p class="mb-0">45 min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="teaches d-flex align-items-center flex-wrap">
+                                        <img src="https://cdn.verbling.com/static/svg/icons8/8045874736b759666da0cb9c097c7777.icons8-time.svg"
+                                            alt="">
+                                        <div>
+                                            <h2 class="mb-0">Lessons</h2>
+                                            <p class="mb-0">3,377</p>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                            <h3 class="speaks"><strong>Speaks: </strong><span *ngFor="let speak of item.speaks">{{speak
+                                    | titlecase}}</span>
+                                <!-- <span class="color1">Native</span>, -->
+                                <!-- English <span class="color2">C1</span>, Latin <span class="color3">B2</span> -->
+                            </h3>
+
+                            <p>{{item.aboutMe}}</p>
+
+                            <!-- <p class="mb-0"> <a href="#" class="btn-link">Read More</a></p> -->
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <mat-paginator [length]="totalRecords" [pageSize]="pageSize" (page)="getPaginatorBookings($event)">
+                </mat-paginator> -->
+                <!-- <div class="card mb-4">
+                <div class="d-flex">
+                <div class="left_side pr-4">
+                    <div class="card-pic">
+                        <img src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fverbling-user-uploads.s3.amazonaws.com%2F38236930202643807545%2FVcupbeywrhPKqtJ%2Fdd3ec828-9437-4b1d-b9d5-d533527c0eef%2Fverbling10.jpg" alt="">
+                        <p>FEATURED</p>
+                    </div>
+                    <div class="ang">
+                        <p class="currency_convertor text-danger"><del>ANG 78.45</del></p>
+                        <p class="currency_convertor text-success">ANG 70.60</p>
+                        <p class="currency_convertor text-black" >ANG/h</p>
+                    </div>
+                </div>
+                <div class="right_side">
+                    <div class="name d-flex justify-content-between mb-4">
+                        <div class="card_name d-flex align-items-center">
+                            <h2 class="mb-0">Gebhard</h2>
+                            <ul>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/f8bb7f40f6d8e98682afb32c7bbdf5d4.icons8-security_checked.svg" alt=""></a></li>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/1368f2579e7d625280c6503321bdd32e.icons8-police_badge.svg" alt=""></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i><strong>5.0</strong></a></li>
+                            </ul>
+                        </div>
+                        <div class="favourite d-flex align-items-center">
+                            <a href="#" class="favorite" class="mr-2"><i class="fa fa-heart-o"></i></a>
+                            <a href="#" mat-raised-button color="accent">Book Free Trial</a>
+                        </div>
+                    </div>
+    
+                    <div class="three_boxes row mb-4">
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1e9-1f1ea.png?v=2.2.7" alt="">
+                              <div>
+                                <h2 class="mb-0">Teaches</h2>
+                                <p class="mb-0">German</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/2ff29f72b10f9eddac8658589cedd72d.icons8-globe.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">From</h2>
+                                <p class="mb-0">Australia</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/8045874736b759666da0cb9c097c7777.icons8-time.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">Lessons</h2>
+                                <p class="mb-0">3,377</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h3 class="speaks"><strong>Speaks: </strong>German <span class="color1">Native</span>, English <span class="color2">C1</span>, Latin <span class="color3">B2</span></h3>
+    
+                    <p>Hello my friend. I will solve your German issues. You want to learn this language? I make you from a beginner to a fluent German speaker! You already speak German but want to improve your skills? I provide the best methods to make you more proficient! You need to pass a language test? I offer a customized test</p>
+    
+                   <p class="mb-0"> <a href="#" class="btn-link">Read More</a></p>
+    
+                </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="d-flex">
+                <div class="left_side pr-4">
+                    <div class="card-pic">
+                        <img src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fverbling-user-uploads.s3.amazonaws.com%2F38236930202643807545%2FVcupbeywrhPKqtJ%2Fdd3ec828-9437-4b1d-b9d5-d533527c0eef%2Fverbling10.jpg" alt="">
+                        <p>FEATURED</p>
+                    </div>
+                    <div class="ang">
+                        <p class="currency_convertor text-danger"><del>ANG 78.45</del></p>
+                        <p class="currency_convertor text-success">ANG 70.60</p>
+                        <p class="currency_convertor text-black" >ANG/h</p>
+                    </div>
+                </div>
+                <div class="right_side">
+                    <div class="name d-flex justify-content-between mb-4">
+                        <div class="card_name d-flex align-items-center">
+                            <h2 class="mb-0">Gebhard</h2>
+                            <ul>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/f8bb7f40f6d8e98682afb32c7bbdf5d4.icons8-security_checked.svg" alt=""></a></li>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/1368f2579e7d625280c6503321bdd32e.icons8-police_badge.svg" alt=""></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i><strong>5.0</strong></a></li>
+                            </ul>
+                        </div>
+                        <div class="favourite d-flex align-items-center">
+                            <a href="#" class="favorite" class="mr-2"><i class="fa fa-heart-o"></i></a>
+                            <a href="#" mat-raised-button color="accent">Book Free Trial</a>
+                        </div>
+                    </div>
+    
+                    <div class="three_boxes row mb-4">
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1e9-1f1ea.png?v=2.2.7" alt="">
+                              <div>
+                                <h2 class="mb-0">Teaches</h2>
+                                <p class="mb-0">German</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/2ff29f72b10f9eddac8658589cedd72d.icons8-globe.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">From</h2>
+                                <p class="mb-0">Australia</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/8045874736b759666da0cb9c097c7777.icons8-time.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">Lessons</h2>
+                                <p class="mb-0">3,377</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h3 class="speaks"><strong>Speaks: </strong>German <span class="color1">Native</span>, English <span class="color2">C1</span>, Latin <span class="color3">B2</span></h3>
+    
+                    <p>Hello my friend. I will solve your German issues. You want to learn this language? I make you from a beginner to a fluent German speaker! You already speak German but want to improve your skills? I provide the best methods to make you more proficient! You need to pass a language test? I offer a customized test</p>
+    
+                   <p class="mb-0"> <a href="#" class="btn-link">Read More</a></p>
+    
+                </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="d-flex">
+                <div class="left_side pr-4">
+                    <div class="card-pic">
+                        <img src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fverbling-user-uploads.s3.amazonaws.com%2F38236930202643807545%2FVcupbeywrhPKqtJ%2Fdd3ec828-9437-4b1d-b9d5-d533527c0eef%2Fverbling10.jpg" alt="">
+                        <p>FEATURED</p>
+                    </div>
+                    <div class="ang">
+                        <p class="currency_convertor text-danger"><del>ANG 78.45</del></p>
+                        <p class="currency_convertor text-success">ANG 70.60</p>
+                        <p class="currency_convertor text-black" >ANG/h</p>
+                    </div>
+                </div>
+                <div class="right_side">
+                    <div class="name d-flex justify-content-between mb-4">
+                        <div class="card_name d-flex align-items-center">
+                            <h2 class="mb-0">Gebhard</h2>
+                            <ul>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/f8bb7f40f6d8e98682afb32c7bbdf5d4.icons8-security_checked.svg" alt=""></a></li>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/1368f2579e7d625280c6503321bdd32e.icons8-police_badge.svg" alt=""></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i><strong>5.0</strong></a></li>
+                            </ul>
+                        </div>
+                        <div class="favourite d-flex align-items-center">
+                            <a href="#" class="favorite" class="mr-2"><i class="fa fa-heart-o"></i></a>
+                            <a href="#" mat-raised-button color="accent">Book Free Trial</a>
+                        </div>
+                    </div>
+    
+                    <div class="three_boxes row mb-4">
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1e9-1f1ea.png?v=2.2.7" alt="">
+                              <div>
+                                <h2 class="mb-0">Teaches</h2>
+                                <p class="mb-0">German</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/2ff29f72b10f9eddac8658589cedd72d.icons8-globe.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">From</h2>
+                                <p class="mb-0">Australia</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/8045874736b759666da0cb9c097c7777.icons8-time.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">Lessons</h2>
+                                <p class="mb-0">3,377</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h3 class="speaks"><strong>Speaks: </strong>German <span class="color1">Native</span>, English <span class="color2">C1</span>, Latin <span class="color3">B2</span></h3>
+    
+                    <p>Hello my friend. I will solve your German issues. You want to learn this language? I make you from a beginner to a fluent German speaker! You already speak German but want to improve your skills? I provide the best methods to make you more proficient! You need to pass a language test? I offer a customized test</p>
+    
+                   <p class="mb-0"> <a href="#" class="btn-link">Read More</a></p>
+    
+                </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="d-flex">
+                <div class="left_side pr-4">
+                    <div class="card-pic">
+                        <img src="https://images.verbling.com/convert/c_cover,h_150,w_150/https%3A%2F%2Fverbling-user-uploads.s3.amazonaws.com%2F38236930202643807545%2FVcupbeywrhPKqtJ%2Fdd3ec828-9437-4b1d-b9d5-d533527c0eef%2Fverbling10.jpg" alt="">
+                        <p>FEATURED</p>
+                    </div>
+                    <div class="ang">
+                        <p class="currency_convertor text-danger"><del>ANG 78.45</del></p>
+                        <p class="currency_convertor text-success">ANG 70.60</p>
+                        <p class="currency_convertor text-black" >ANG/h</p>
+                    </div>
+                </div>
+                <div class="right_side">
+                    <div class="name d-flex justify-content-between mb-4">
+                        <div class="card_name d-flex align-items-center">
+                            <h2 class="mb-0">Gebhard</h2>
+                            <ul>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/f8bb7f40f6d8e98682afb32c7bbdf5d4.icons8-security_checked.svg" alt=""></a></li>
+                                <li><a href="#"><img src="https://cdn.verbling.com/static/svg/icons8/1368f2579e7d625280c6503321bdd32e.icons8-police_badge.svg" alt=""></a></li>
+                                <li><a href="#"><i class="fa fa-star"></i><strong>5.0</strong></a></li>
+                            </ul>
+                        </div>
+                        <div class="favourite d-flex align-items-center">
+                            <a href="#" class="favorite" class="mr-2"><i class="fa fa-heart-o"></i></a>
+                            <a href="#" mat-raised-button color="accent">Book Free Trial</a>
+                        </div>
+                    </div>
+    
+                    <div class="three_boxes row mb-4">
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.jsdelivr.net/emojione/assets/png/1f1e9-1f1ea.png?v=2.2.7" alt="">
+                              <div>
+                                <h2 class="mb-0">Teaches</h2>
+                                <p class="mb-0">German</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/2ff29f72b10f9eddac8658589cedd72d.icons8-globe.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">From</h2>
+                                <p class="mb-0">Australia</p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="teaches d-flex align-items-center">
+                                <img src="https://cdn.verbling.com/static/svg/icons8/8045874736b759666da0cb9c097c7777.icons8-time.svg" alt="">
+                                <div>
+                                <h2 class="mb-0">Lessons</h2>
+                                <p class="mb-0">3,377</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h3 class="speaks"><strong>Speaks: </strong>German <span class="color1">Native</span>, English <span class="color2">C1</span>, Latin <span class="color3">B2</span></h3>
+    
+                    <p>Hello my friend. I will solve your German issues. You want to learn this language? I make you from a beginner to a fluent German speaker! You already speak German but want to improve your skills? I provide the best methods to make you more proficient! You need to pass a language test? I offer a customized test</p>
+    
+                   <p class="mb-0"> <a href="#" class="btn-link">Read More</a></p>
+    
+                </div>
+                </div>
+            </div> -->
+
+            </div>
+            <div class="col-md-4 res_col">
+                <div class="text-right mb-4">   
+                    <div *ngIf="user && user.role!='teacher'">
+                        <!-- <mat-checkbox class="check-margin">Online Now</mat-checkbox> -->
+                        <!-- <mat-checkbox (click)="getFavourites($event)"class="check-margin">Favorites</mat-checkbox> -->
+                            <!-- <input type="checkbox" class="max mr-2" name="" (click)="getFavourites($event.target.checked)" id="">Favorites -->
+                            <mat-checkbox class="example-margin" class=" max mr-5" [(ngModel)]="checked" (change)="getFavourites()">Favorites</mat-checkbox>
+                    </div>
+
+                    <!-- <mat-form-field appearance="outline">
+                        <mat-label> Sort By</mat-label>
+                        <mat-select disableRipple>
+                            <mat-option value="1"> Sort by Most Relevance</mat-option>
+                            <mat-option value="2">Sort by Most Price-Low-high</mat-option>
+                            <mat-option value="3"> Sort by Most Price-High-Low</mat-option>
+                            <mat-option value="4">Sort by Most Most-Recently-Active</mat-option>
+                            <mat-option value="5"> Sort by Most Popular</mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
+
+                </div>
+
+                <div class="video card">
+                    <img *ngIf="!urlSafe" src="assets/img/novideo.png" class="w-100" alt="">
+                    <iframe [src]="urlSafe" *ngIf="urlSafe" width="100%" class="w-100" height="500" frameborder="0"
+                        allowfullscreen></iframe>
+                    <!-- <iframe height="415" src="https://www.youtube.com/embed/eEaZvEZye84" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe> -->
+
+                    <!-- <mat-card class="demo-inline-calendar-card">
+                        <mat-calendar [(selected)]="selected"></mat-calendar>
+                    </mat-card> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

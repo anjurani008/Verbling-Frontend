@@ -1,0 +1,496 @@
+.coupon  {
+    border-radius: 8px;
+    text-align: center;
+    padding: 16px;
+    background-color: #000;
+    color: #fff;
+  }
+  iframe {
+    border-radius: 8px 8px 0px 0px;
+  }
+  .shadow.border-radius.bg-white {
+    border-radius: 8px;
+  }
+  .coupon h1 {
+    font-size: 21px;
+    margin-bottom: 0;
+    font-weight: 500;
+    cursor: pointer;
+    color: #fff;
+}
+h1.title {
+    font-weight: 500;
+    font-size: 2.2rem;
+}
+.subject-img{
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50%;
+}
+.panel-body {
+    padding: 1rem;
+  }
+  .flex-direction-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+  }
+  .flex-align-center {
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  .flex.flex-1.flex-direction-column.teacher-main-info {
+    padding-left: 2rem;
+    width: 100%;
+  }
+  .margin-right-sm {
+    margin-right: 4px!important;
+  }
+  .flex.flex-direction-row.mobile-flex-direction-column.flex-justify-content-space-between.teacher-info.margin-bottom-md.mobile-hide {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .flex.flex-align-center.flex-direction-row.mobile-flex-direction-column.margin-bottom-sm {
+    font-size: 16px;
+  }
+  label.ProfileBase--truncate.margin-right-sm {
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: #666e7e;
+    font-weight: 600;
+  }
+  label.ProfileBase--truncate {
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: #666e7e;
+    font-weight: 600;
+}
+.margin-right-md {
+    margin-right: 8px!important;
+  }
+  .text-bold.text-large {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  h3.no-margin-bottom.margin-right-xl {
+    margin-bottom: 0px;
+  }
+  .flex.flex-direction-row.mobile-flex-direction-column.flex-align-center.mobile-flex-align-start {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  h3.no-margin-bottom.margin-right-xl {
+    margin-right: 18px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+.ProfileBase--truncate.flex.flex-direction-column {
+    margin-left: 5px;
+  }
+  .ProfileBase--truncate {
+    font-size: 16px;
+  }
+  .flex.flex-direction-row.mobile-flex-direction-column.flex-justify-content-space-between.margin-bottom-sm {
+    justify-content: space-between;
+  }
+  .flex.flex-direction-row.ProfileBase--InnerBlock.flex-align-center.margin-bottom-md {
+    padding: 1rem;
+    border-radius: 0.4rem;
+    background-color: #f8f8f8;
+    max-width: 31%;
+    flex-basis: 0%;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+  }
+  .verb-profile-pic.round {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+  }
+  .flex {
+ 
+    display: flex;
+  }
+  h3.aboutCls {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .Desc {
+    font-size: 18px;
+  }
+  a.primary{
+        color: #e3107d !important;
+  }
+  a.primary.fs {
+    font-size: 18px;
+  }
+  .flex.flex-align-center.flex-direction-row.mobile-flex-direction-column.margin-bottom-sm {
+    margin: 3px 0px;
+  }
+  .panel-large-body-padding.shadow.bg-white.mt-3 {
+    border-radius: 8px;
+  }
+  div#section-analytic-badges h2 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  span label {
+    color: #666e7e;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .flex.text-bold.flex-direction-column span {
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+  }
+  .bgGray{
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    padding: 12px;
+    display: flow-root;
+  }
+  .col-md-12.p-0 h2 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .col-md-12.p-0 label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .col-md-6 p {
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+  .col-md-12 p {
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+h3.flex.flex-direction-row.flex-align-center span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .col-10 {
+    font-size: 18px;
+    padding: 0px 5px;
+  }
+  .text-left {
+    font-size: 16px;
+    font-weight: 500;
+  }  
+   .Badge__notification {
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50%;
+    position: absolute;
+  }  
+  .Badge__notification {
+    top: -8px;
+    right: -8px;
+    font-size: 12px;
+    min-width: 24px;
+    background-color: #ffb300;
+    min-height: 24px;
+  }
+  .Badge--yellow .Badge__inner {
+    border-color: #ffb300;
+    background-color: #fff7e6;
+  }
+  .Badge__inner {
+    width: 60px;
+    height: 60px;
+  }
+  .Badge__inner {
+    -webkit-box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%);
+    border-radius: 50%;
+    border-width: 3px;
+    border: 3px solid #ffb300;
+    position: relative;
+    margin: auto;
+  }
+  .flex-align-center {
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  .Badge__inner.flex.flex-direction-row.flex-justify-content-center.flex-align-center {
+    justify-content: center;
+  }
+  .Badge__name {
+    text-align: center;
+    font-weight: 500;
+  }
+  .boxSmall {
+    width: 80px;
+    flex-direction: column;
+    margin: 15px;
+  }
+  .bgGray.p-3 {
+    flex-wrap: wrap!important;
+    display: flex;
+    flex-direction: row;
+  justify-content: center;
+  }
+  .blue{
+    border:3px solid #2196f3;
+  }
+  .red{
+    border:3px solid #e91e63;
+  }
+  .green{
+    border:3px solid #388e3c;
+  }
+  .hardBlue{
+    border:3px solid #1565c0;
+  }
+  .greenbg{
+      background: #388e3c;
+  }
+  .bluebg{
+      background: #2196f3;
+  }
+  .redbg{
+      background: #e91e63;
+  }
+  .hardBluebg{
+      background: #1565c0;
+  }
+  img.ProfImg {
+    border-radius: 50%;
+    width: 4rem;
+    display: block;
+    margin: auto;
+  }
+  .bg-gray.p-3.border-dashed-red {
+    margin-top: 10px;
+    background-color: rgb(248, 248, 248);
+    border-radius: 6px;
+    border: 2px dashed rgb(204, 204, 204);
+    padding: 10px;
+  }
+  .bg-gray.p-3.border-dashed-red .row {
+    align-items: center;
+  }
+  a.read {
+    font-size: 16px;
+    color: #e3107d !important;
+  }
+  a.translate {
+    color: #e3107d !important;
+  }
+  .col-md-7 a {
+    color: #e3107d !important;
+    font-size: 16px;
+}
+a.tagLink {
+    font-size: 16px;
+    color: #e3107d !important;
+    cursor: pointer;
+  }
+  a.tagLink:hover {
+opacity: 0.7;
+  }
+.input-group .fa {
+    color: #ccc;
+  }
+  span.input-group-addon {
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    border-radius: 5px 0px 0px 5px;
+  }
+  .form-group label {
+    font-weight: 500;
+  }
+  .row.align-item-center {
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  p.mt-3.fsCls {
+    font-size: 16px;
+  }
+  .panel-default>.panel-heading {
+    color: #252b2f;
+  }
+  .ProfileBase .teacher-pricing {
+    padding: 16px;
+  }
+  .panel-heading {
+    background-color: #f8f8f8;
+  }
+  h3.no-margin-top.no-margin-bottom.mb-0 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .panel-title small {
+    font-size: 14px;
+  }
+  span.text-large.text-bold {
+    font-size: 20px !important;
+    color: #e3107d;
+  }
+  .min {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  button{
+    box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
+  }
+  span.text-large.text-bold.line {
+    text-decoration: line-through;
+    color: red;
+  }
+  button.btn.btn-outline-primary.w-100.mt-3 {
+    border-color: #e3107d;
+    color: #e3107d;
+    font-size: 16px;
+  }
+  .btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: #e3107d;
+  }
+  .session-rate {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e31091;
+  }
+  .less {
+    color: #787b83;
+  }
+ 
+  i.fa.fa-heart-o {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+  }
+  i.fa.fa-heart {
+    cursor: pointer;
+  }
+
+  .verb-profile-pic.round{
+    width: 150px;
+}
+
+
+
+
+@media (max-width: 768px) {
+.d-flex.flex-wrap.flex-direction-row.mobile-flex-direction-column.flex-justify-content-space-between.teacher-info.margin-bottom-md.mobile-hide {
+  display: block !important;
+}
+.flex.flex-direction-row.ProfileBase--InnerBlock.flex-align-center.margin-bottom-md {
+
+  max-width: 100%;
+}
+.col-4.text-right {
+  display: inline-table;
+  text-align: center;
+  width: 100%;
+}
+}
+@media (max-width: 767px) {
+  .flex.flex-direction-row.flex-align-center.margin-bottom-xl {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .flex.flex-1.flex-direction-column.teacher-main-info {
+    padding-left: 0rem;
+    width: 100%;
+  }
+.flex.flex-direction-row.mobile-flex-direction-column {
+  display: block !important;
+}
+.flex.flex-align-center.flex-direction-row.mobile-flex-direction-column.margin-bottom-sm {
+  display: flex !important;
+}
+.flex.flex-align-center.ph {
+  display: block !important;
+}
+h1.no-margin.margin-right-md.masked-h2 {
+ 
+  font-weight: 600;
+}
+.flex.flex-direction-row.ProfileBase--InnerBlock.flex-align-center.margin-bottom-md {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+.panel.panel-default.panel-trial.link-normalize.margin-bottom-md.shadow.bg-white  {
+  width: auto;
+}
+}
+
+.e-schedule-event-tooltip .tooltip-wrap {
+  display: flex;
+}
+
+.e-schedule-event-tooltip .tooltip-wrap .image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+}
+
+
+
+.e-schedule-event-tooltip .tooltip-wrap .name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.imgdiv img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.barpage h1{
+  font-size: 18px;
+  color: #000;
+}
+.textmain p{
+  font-size: 18px;
+  color: #000;
+}
+.daterow{
+  font-weight: 500;
+}
+.tooltip-wrap{
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+.textmain button{
+ color: #fff;
+}
+.barpage{
+  background-color: #ecf0f1;
+}
+span.ng-star-inserted {
+  padding-right: 12px;
+}
+span.rowText {
+  display: inline-block;
+  padding-left: 2rem;
+}
+.ProfileBase--truncate li {
+  padding-top: 10px;
+}
+img.coun {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+.coun-list{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 0.5rem; 
+}

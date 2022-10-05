@@ -1,0 +1,117 @@
+footer{
+    background-color: rgb(242, 247, 253);
+}
+footer h2 {
+    font-weight: 400 !important;
+    // position: relative;
+    // padding-bottom: 8px;
+    // margin-bottom: 1.5rem;
+}
+// footer h2:before {
+//     content: "";
+//     position: absolute;
+//     top: auto;
+//     left: 0;
+//     right: auto;
+//     bottom: 0;
+//     width: 28px;
+//     height: 2px;
+//     background-color: #ff4081;
+// }
+.foot_list li {
+    font-size: 15px;
+    margin-bottom: 12px;
+    // position: relative;
+    // padding-left: 13px;
+}
+// .foot_list li:before {
+//     position: absolute;
+//     content: "";
+//     top: 50%;
+//     left: 0;
+//     right: auto;
+//     transform: translateY(-50%);
+//     width: 5px;
+//     height: 5px;
+//     background-color: #ff4081;
+//     border-radius: 50%;
+// }
+.foot_list li:hover a {
+    color: #ff4081;
+}
+.foot_list li a {
+    transition: .3s ease;
+}
+.foot_list i.fa {
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    margin-right: 0.5rem;
+}
+.foot_list i.fa.fa-facebook{
+    background-color: #3f51b5;
+}
+.foot_list i.fa.fa-twitter{
+    background-color: #00a9f4;
+}
+.foot_list i.fa.fa-instagram{
+    background-color: #c7185c;
+}
+.social_links a{
+    display: flex;
+    align-items: center;
+}
+.social_links li:before{
+    display: none;
+    content: "";
+}
+.social_links li{
+    padding-left: 0px;
+}
+.copyright {
+    font-size: 12px;
+}
+.policy li {
+    display: inline-block;
+    padding-left: 10px;
+    margin-left: 10px;
+    position: relative;
+}
+.policy li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    left: 0;
+    right: auto;
+    width: 1px;
+    height: 100%;
+    background-color: #ff4081;
+}
+.policy li:first-child:before{
+    content: "";
+    display: none;
+}
+
+
+
+@media(min-width:576px) and (max-width:768px){
+
+    footer h2{
+        font-size: 18px;
+    }
+
+}
+
+@media(min-width:768px) and (max-width:992px){
+
+    footer h2{
+        font-size: 18px;
+    }
+    
+
+}
